@@ -9,6 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "computer")
 public class Computer extends Product{
 
     private String ScreenResolution;
