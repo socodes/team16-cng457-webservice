@@ -1,7 +1,5 @@
 package com.example.webservice.entity;
 
-public class Phone {
-    private String Phone_Brand;
-    private String Phone_Model;
+public class Phone extends Product {
     private String InternalMemory;
 }
