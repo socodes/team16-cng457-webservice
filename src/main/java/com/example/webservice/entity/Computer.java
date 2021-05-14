@@ -1,8 +1,16 @@
 package com.example.webservice.entity;
 
-public class Computer {
-    private String Computer_Brand;
-    private String Computer_Model;
+
+import lombok.*;
+
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Computer extends Product{
+
     private String ScreenResolution;
     private String StorageCapacity;
     private String Memory;

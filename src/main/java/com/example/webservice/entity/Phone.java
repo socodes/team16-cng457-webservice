@@ -1,7 +1,16 @@
 package com.example.webservice.entity;
 
-public class Phone {
-    private String Phone_Brand;
-    private String Phone_Model;
+
+
+import lombok.*;
+
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Phone extends Product {
+
     private String InternalMemory;
 }
