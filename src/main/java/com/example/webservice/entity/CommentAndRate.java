@@ -2,18 +2,26 @@ package com.example.webservice.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "car")
+@Table(name = "commentandrate")
 public class CommentAndRate {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "carid")
     private int comment_id;
+
+    @Column(name = "carrate")
     private int rate;
+
+    @Column(name = "carcomment")
     private String comment;
-    private Product product; //1 to Many relation
+
+    @ManyToOne // owning
+    private Product product;
 
 }
