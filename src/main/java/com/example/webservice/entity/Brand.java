@@ -1,7 +1,6 @@
 package com.example.webservice.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,13 +8,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Brands")
 public class Brand {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "bid")
     private int brand_id;
+
+    @Column(name = "bname")
     private String brand_name;
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
-    private List<Product> productList; //1 to Many relation
+
+    @ManyToMany(mappedBy = "brandList") // owned
+    private List<Product> productList;
 
 }
