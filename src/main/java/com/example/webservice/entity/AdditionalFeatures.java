@@ -20,6 +20,6 @@ public class AdditionalFeatures {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int afs_id;
 
-    @ManyToMany(mappedBy = "additionalFeaturesList") // owned
+    @ManyToMany(mappedBy = "additionalFeaturesList", cascade = CascadeType.ALL) // owned
     private List<Product> productList;
 }
