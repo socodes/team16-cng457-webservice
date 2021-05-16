@@ -25,15 +25,15 @@ public class Product {
     @Column(name = "pscreensize")
     private String screensize;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL) // owned
+    @OneToMany(mappedBy = "comment_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
     private List<CommentAndRate> commentAndRatesList;
 
-    @ManyToMany(fetch = FetchType.EAGER) //owning
-    @JoinTable(name = "ProductLines_has_b", joinColumns = @JoinColumn (name = "pmodel"), inverseJoinColumns = @JoinColumn (name = "bid"))
+    @ManyToMany //owning
+    @JoinColumn(name = "brand_id", insertable = false, updatable = false)
     private List<Brand> brandList;
 
-    @ManyToMany(fetch = FetchType.EAGER) // owning
-    @JoinTable(name = "ProductLines_has_af", joinColumns = @JoinColumn (name = "pmodel"), inverseJoinColumns = @JoinColumn (name = "afs_id"))
+    @ManyToMany // owning
+    @JoinColumn(name = "afs_id", insertable = false, updatable = false)
     private List<AdditionalFeatures> additionalFeaturesList;
 
 

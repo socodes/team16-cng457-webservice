@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "commentandrate")
 public class CommentAndRate {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "carid")
     private int comment_id;
 
@@ -22,6 +22,7 @@ public class CommentAndRate {
     private String comment;
 
     @ManyToOne // owning
+    @JoinColumn(referencedColumnName = "pmodel",insertable = false, updatable = false)
     private Product product;
 
 }

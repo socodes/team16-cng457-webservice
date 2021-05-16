@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "Brands")
 public class Brand {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bid")
     private int brand_id;
 
