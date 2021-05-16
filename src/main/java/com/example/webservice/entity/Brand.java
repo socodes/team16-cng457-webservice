@@ -12,13 +12,10 @@ import java.util.List;
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bid")
     private int brand_id;
-
-    @Column(name = "bname")
     private String brand_name;
 
-    @ManyToMany(mappedBy = "brandList") // owned
+    @ManyToMany(mappedBy = "brandList", cascade = CascadeType.ALL) // owned
     private List<Product> productList;
 
 }
