@@ -9,12 +9,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "product")
 public class Product {
     @Id
-    private int model;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int product_id;
+    private String model;
     private int price;
     private String label;
     private String screensize;
@@ -22,13 +23,12 @@ public class Product {
     @OneToMany(mappedBy = "comment_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
     private List<CommentAndRate> commentAndRatesList;
 
-    @ManyToMany //owning
-    @JoinTable(name = "product_has_brand", joinColumns = @JoinColumn(name = "model"), inverseJoinColumns = @JoinColumn(name = "productList"))
-    private List<Brand> brandList;
-
-    @ManyToMany // owning
-    @JoinColumn(name = "afs_id")
+    @ManyToMany() // owning
+    @JoinTable(name = "product_has_afs", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "productList"))
     private List<AdditionalFeatures> additionalFeaturesList;
 
+    @ManyToMany //owning
+    @JoinTable(name = "product_has_brand", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "productList"))
+    private List<Brand> brandList;
 
 }

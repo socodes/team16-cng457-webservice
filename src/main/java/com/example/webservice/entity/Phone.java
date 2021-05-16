@@ -12,6 +12,5 @@ import javax.persistence.*;
 @Entity
 @Table(name = "phone")
 public class Phone extends Product {
-    @Column(name = "phone_internalmemory")
     private String InternalMemory;
 }
