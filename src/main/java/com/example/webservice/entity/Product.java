@@ -13,27 +13,21 @@ import java.util.List;
 @Table(name = "product")
 public class Product {
     @Id
-    @Column(name = "pmodel", nullable = false)
-    private String model;
+    private int model;
 
-    @Column(name = "pprice")
     private int price;
-
-    @Column(name = "plabel")
     private String label;
-
-    @Column(name = "pscreensize")
     private String screensize;
 
     @OneToMany(mappedBy = "comment_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
     private List<CommentAndRate> commentAndRatesList;
 
     @ManyToMany //owning
-    @JoinColumn(name = "brand_id", insertable = false, updatable = false)
+    @JoinTable(name = "product_has_brand", joinColumns = @JoinColumn(name = "model"), inverseJoinColumns = @JoinColumn(name = "productList"))
     private List<Brand> brandList;
 
     @ManyToMany // owning
-    @JoinColumn(name = "afs_id", insertable = false, updatable = false)
+    @JoinColumn(name = "afs_id")
     private List<AdditionalFeatures> additionalFeaturesList;
 
 
