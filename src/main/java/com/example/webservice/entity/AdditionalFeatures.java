@@ -26,12 +26,11 @@ public class AdditionalFeatures {
     private boolean fingerprintReader;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "afs_id")
-    private AdditionalFeatures af_id;
+    private int afs_id;
 
     @ManyToMany(mappedBy = "additionalFeaturesList") // owned
+    @JoinColumn(name = "model")
     private List<Product> productList;
-
-
 }
