@@ -27,4 +27,8 @@ public class PhoneService {
         return phoneRepository.getPhoneDetails();
     }
 
+    public List<Phone> getPhonesFromBrand(String name){
+        return phoneRepository.getPhonesFromBrand(name);
+    }
+
 }

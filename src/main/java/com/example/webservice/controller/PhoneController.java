@@ -27,4 +27,9 @@ public class PhoneController {
     public List<Phone> getPhoneDetails(){
         return phoneService.getPhoneDetails();
     }
+
+    @GetMapping("/getphonesbybrand")
+    public List<Phone> getPhonesFromBrand(@PathVariable String name){
+        return phoneService.getPhonesFromBrand(name);
+    }
 }
