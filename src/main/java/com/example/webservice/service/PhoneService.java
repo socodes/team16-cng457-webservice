@@ -3,9 +3,10 @@ package com.example.webservice.service;
 import com.example.webservice.entity.Phone;
 import com.example.webservice.entity.Product;
 import com.example.webservice.repository.PhoneRepository;
-import com.example.webservice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PhoneService {
@@ -21,4 +22,9 @@ public class PhoneService {
     {
         return phoneRepository.findById(id).orElse(null);
     }
+
+    public List<Phone> getPhoneDetails(){
+        return phoneRepository.getPhoneDetails();
+    }
+
 }
