@@ -8,7 +8,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "afs")
 public class AdditionalFeatures {
     private boolean faceRecognition;
     private boolean allDayBatteryLife;
