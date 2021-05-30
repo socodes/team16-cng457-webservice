@@ -29,8 +29,9 @@ public class ComputerController {
         return computerService.getComputerDetails();
     }
 
-    @GetMapping("/getcomputersbybrand")
+    /*
+    @GetMapping("/getcomputersbybrand/{name}")
     public List<Computer> getComputerFromBrand(@PathVariable String name){
         return computerService.getComputerFromBrand(name);
-    }
+    }*/
 }

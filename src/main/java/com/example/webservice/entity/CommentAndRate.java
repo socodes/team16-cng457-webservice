@@ -8,7 +8,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "commentandrate")
 public class CommentAndRate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
