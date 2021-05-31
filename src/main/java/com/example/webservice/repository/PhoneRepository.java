@@ -12,7 +12,7 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer> {
     @Query("SELECT p FROM Phone p")
     public List<Phone> getPhoneDetails();
 
-    List<Phone> findByBrandList(String brandList); //not work
+    List<Phone> findByBrandList(String brandList); //not work for find bran
 
 
 
