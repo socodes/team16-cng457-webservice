@@ -21,4 +21,17 @@ public class PhoneService {
     {
         return phoneRepository.findById(id).orElse(null);
     }
+<<<<<<< Updated upstream
+=======
+
+    public List<Phone> getPhoneDetails(){
+        return phoneRepository.getPhoneDetails();
+    }
+
+    public List<Phone> getPhonesFromBrand(String name){
+        return phoneRepository.findByBrandList(name);
+    }
+
+
+>>>>>>> Stashed changes
 }

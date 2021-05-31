@@ -20,4 +20,21 @@ public class PhoneController {
     public Product getPhone(@PathVariable int id){
         return phoneService.getPhone(id);
     }
+<<<<<<< Updated upstream
+=======
+
+    @GetMapping("/getphonealldetails")
+    public List<Phone> getPhoneDetails(){
+        return phoneService.getPhoneDetails();
+    }
+
+
+    @GetMapping("/getphonesbybrand/{name}")
+    public List<Phone> getPhonesFromBrand(@PathVariable String name){
+        return phoneService.getPhonesFromBrand(name);
+    }
+
+
+
+>>>>>>> Stashed changes
 }
