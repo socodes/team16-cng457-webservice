@@ -13,8 +13,12 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int brand_id;
     private String brand_name;
-
+/*
     @ManyToMany(mappedBy = "brandList", cascade = CascadeType.ALL) // owned
     private List<Product> productList;
+    */
+    @OneToMany(mappedBy = "brandList", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
+    private List<Product> brandList;
+
 
 }

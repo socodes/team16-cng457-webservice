@@ -26,9 +26,16 @@ public class PhoneService {
     public List<Phone> getPhoneDetails(){
         return phoneRepository.getPhoneDetails();
     }
+
+
+    public List<Phone> getPhonesFromBrand(String name){
+        return phoneRepository.findByBrandList(name);
+    }
+
     /*
     public List<Phone> getPhonesFromBrand(String name){
         return phoneRepository.getPhonesFromBrand(name);
     }*/
+
 
 }
