@@ -6,6 +6,8 @@ import com.example.webservice.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class PhoneController {
     @Autowired
@@ -20,8 +22,7 @@ public class PhoneController {
     public Product getPhone(@PathVariable int id){
         return phoneService.getPhone(id);
     }
-<<<<<<< Updated upstream
-=======
+
 
     @GetMapping("/getphonealldetails")
     public List<Phone> getPhoneDetails(){
@@ -36,5 +37,5 @@ public class PhoneController {
 
 
 
->>>>>>> Stashed changes
+
 }

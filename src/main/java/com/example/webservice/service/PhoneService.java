@@ -7,6 +7,8 @@ import com.example.webservice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PhoneService {
     @Autowired
@@ -21,8 +23,6 @@ public class PhoneService {
     {
         return phoneRepository.findById(id).orElse(null);
     }
-<<<<<<< Updated upstream
-=======
 
     public List<Phone> getPhoneDetails(){
         return phoneRepository.getPhoneDetails();
@@ -33,5 +33,5 @@ public class PhoneService {
     }
 
 
->>>>>>> Stashed changes
+
 }
