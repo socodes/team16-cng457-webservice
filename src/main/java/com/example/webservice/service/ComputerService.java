@@ -1,11 +1,12 @@
 package com.example.webservice.service;
 
 import com.example.webservice.entity.Computer;
-import com.example.webservice.entity.Product;
+import com.example.webservice.entity.Phone;
 import com.example.webservice.repository.ComputerRepository;
-import com.example.webservice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ComputerService {
@@ -21,4 +22,12 @@ public class ComputerService {
     {
         return computerRepository.findById(id).orElse(null);
     }
+
+    public List<Computer> getComputerDetails(){
+        return computerRepository.getComputerDetails();
+    }
+    /*
+    public List<Computer> getComputerFromBrand(String name){
+        return computerRepository.getComputerFromBrand(name);
+    } */
 }

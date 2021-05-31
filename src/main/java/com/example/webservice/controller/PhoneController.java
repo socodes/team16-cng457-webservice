@@ -30,12 +30,17 @@ public class PhoneController {
     }
 
 
+
     @GetMapping("/getphonesbybrand/{name}")
     public List<Phone> getPhonesFromBrand(@PathVariable String name){
         return phoneService.getPhonesFromBrand(name);
     }
 
 
-
+    /*
+    @GetMapping("/getphonesbybrand/{name}")
+    public List<Phone> getPhonesFromBrand(@PathVariable String name){
+        return phoneService.getPhonesFromBrand(name);
+    } */
 
 }

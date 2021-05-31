@@ -9,12 +9,20 @@ import java.util.List;
 public interface PhoneRepository extends JpaRepository<Phone, Integer> {
 
 
+
     @Query("SELECT p FROM Phone p")
     public List<Phone> getPhoneDetails();
 
     List<Phone> findByBrandList(String brandList); //not work for find bran
 
 
+    @Query("SELECT p FROM Phone p")
+    public List<Phone> getPhoneDetails();
+
+    /*
+    @Query("SELECT p FROM Phone p WHERE p.brandList.brand_name LIKE %?1%")
+    public List<Phone> getPhonesFromBrand(String name);
+*/
 
 
 }
