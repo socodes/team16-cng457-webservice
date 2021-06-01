@@ -15,12 +15,12 @@ public class ComputerController {
     ComputerService computerService;
 
     @PostMapping("/addcomputer")
-    public Computer saveComputer(@RequestBody Computer c){
+    public Product saveComputer(@RequestBody Computer c){
         return computerService.saveComputer(c);
     }
 
     @GetMapping("/getcomputer/{id}")
-    public Computer getComputer(@PathVariable int id){
+    public Product getComputer(@PathVariable int id){
         return computerService.getComputer(id);
     }
 
