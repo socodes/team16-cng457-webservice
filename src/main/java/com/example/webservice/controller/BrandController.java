@@ -20,7 +20,7 @@ public class BrandController {
     }
 
     @GetMapping("/getbrand/{id}")
-    public Brand getComputer(@PathVariable int id){
+    public Brand getBrand(@PathVariable int id){
         return brandService.getBrand(id);
     }
 
