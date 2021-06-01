@@ -14,7 +14,7 @@ public class PhoneController {
     PhoneService phoneService;
 
     @PostMapping("/addphone")
-    public Product savePhone(@RequestBody Phone p){
+    public Phone savePhone(@RequestBody Phone p){
         return phoneService.savePhone(p);
     }
 
@@ -31,9 +31,9 @@ public class PhoneController {
 
 
 
-    @GetMapping("/getphonesbybrand/{name}")
-    public List<Phone> getPhonesFromBrand(@PathVariable String name){
-        return phoneService.getPhonesFromBrand(name);
+    @GetMapping("/getphonesbybrand/{id}")
+    public List<Phone> getPhonesFromBrand(@PathVariable int id){
+        return phoneService.getPhonesFromBrand(id);
     }
 
 
