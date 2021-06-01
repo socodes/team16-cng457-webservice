@@ -1,9 +1,12 @@
 package com.example.webservice.controller;
 
+import com.example.webservice.entity.Phone;
 import com.example.webservice.entity.Product;
 import com.example.webservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ProductController {
@@ -19,5 +22,10 @@ public class ProductController {
     @GetMapping("/getProduct/{id}")
     public Product getProduct(@PathVariable  int id){
         return productService.getProduct(id);
+    }
+
+    @GetMapping("/getproductalldetails")
+    public List<Product> getProductDetails(){
+        return productService.getProductDetails();
     }
 }
