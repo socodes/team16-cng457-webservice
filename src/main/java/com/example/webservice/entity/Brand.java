@@ -14,7 +14,7 @@ public class Brand {
     private int brand_id;
     private String brand_name;
 
-    @OneToMany(mappedBy = "brandList", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
+    @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
     private List<Product> brandList;
 
 
