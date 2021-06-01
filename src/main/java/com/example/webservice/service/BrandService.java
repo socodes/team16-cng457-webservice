@@ -18,7 +18,6 @@ public class BrandService {
         return brandRepository.save(b);
     }
 
-
     public Brand getBrand(int id)
     {
         return brandRepository.findById(id).orElse(null);

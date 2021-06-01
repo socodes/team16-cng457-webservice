@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    @Query("SELECT p FROM Product p JOIN Brand b ON p.product_id = b.brand_id AND p.brandList = b.brand_name")
+    @Query("SELECT p FROM Product p INNER JOIN Brand b ON p.product_id = b.brand_id")
     public List<Product> getProductDetails();
 }

@@ -14,12 +14,12 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @PostMapping("/addProduct")
+    @PostMapping("/addproduct")
     public Product saveProduct(@RequestBody Product p){
         return productService.saveProduct(p);
     }
 
-    @GetMapping("/getProduct/{id}")
+    @GetMapping("/getproduct/{id}")
     public Product getProduct(@PathVariable  int id){
         return productService.getProduct(id);
     }
