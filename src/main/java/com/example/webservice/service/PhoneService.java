@@ -28,8 +28,8 @@ public class PhoneService {
     }
 
 
-    public List<Phone> getPhonesFromBrand(int id){
-        return phoneRepository.findByBrandName(id);
+    public List<Phone> getPhonesFromBrand(String name){
+        return phoneRepository.findByBrandList(name);
     }
 
     /*
