@@ -15,9 +15,7 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer> {
 
     List<Phone> findByBrandList(String brandList); //not work for find bran
 
-
-    @Query("SELECT p FROM Phone p")
-    public List<Phone> getPhoneDetails();
+    
 
     /*
     @Query("SELECT p FROM Phone p WHERE p.brandList.brand_name LIKE %?1%")
