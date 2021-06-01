@@ -27,9 +27,7 @@ public class Product {
     private List<AdditionalFeatures> additionalFeaturesList;
 
     @ManyToOne // owning
-    private Brand brand;
-
-    private int brandid;
+    private Brand brandList;
     /*
     @ManyToMany //owning
     @JoinTable(name = , joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "productList"))
