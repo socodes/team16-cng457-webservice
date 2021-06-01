@@ -15,7 +15,7 @@ public class BrandController {
     BrandService brandService;
 
     @PostMapping("/addbrand")
-    public  Brand saveBrand(@RequestBody Brand brand){
+    public Brand saveBrand(@RequestBody Brand brand){
         return brandService.saveBrand(brand);
     }
 
