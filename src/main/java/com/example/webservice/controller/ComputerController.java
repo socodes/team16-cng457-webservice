@@ -33,4 +33,9 @@ public class ComputerController {
     public List<Computer> getComputerFromBrand(@PathVariable String name){
         return computerService.getComputerFromBrand(name);
     }
+
+    @GetMapping("/getphonesbybrandandid/{name}/{id}")
+    public List<Computer> getPhonesFromBrandandID(@PathVariable String name,@PathVariable int id){
+        return computerService.getComputerFromBrandandID(name,id);
+    }
 }

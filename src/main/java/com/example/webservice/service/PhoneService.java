@@ -31,5 +31,9 @@ public class PhoneService {
         return phoneRepository.getPhonesFromBrand(name);
     }
 
+    public List<Phone> getPhonesFromBrandandID(String name,int id){
+        return phoneRepository.getPhonesFromBrandandID(name,id);
+    }
+
 
 }
