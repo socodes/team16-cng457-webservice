@@ -26,6 +26,7 @@ public class ProductService {
         return productRepository.getProductDetails();
     }
 
+    /*
     public List<Product> getProductByModel(String model) {
         return productRepository.getProductByModel(model);
     }
@@ -41,4 +42,5 @@ public class ProductService {
     public List<Product> getProductByScreensize(String screensize) {
         return productRepository.getProductByScreensize(screensize);
     }
+    */
 }

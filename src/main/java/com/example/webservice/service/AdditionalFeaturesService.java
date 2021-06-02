@@ -30,4 +30,5 @@ public class AdditionalFeaturesService {
     public List<AdditionalFeatures> getAdditionalFeaturesByName(String name) {
         return AdditionalFeaturesRepository.getAdditionalFeaturesByName(name);
     }
+
 }

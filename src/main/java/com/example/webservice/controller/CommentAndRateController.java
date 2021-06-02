@@ -28,15 +28,4 @@ public class CommentAndRateController {
         return CommentAndRateService.getCommentAndRateDetails();
     }
 
-    @GetMapping("/getcommentandrate/{rate}")
-    public List<CommentAndRate> getCommentAndRateByRate(@PathVariable int rate){
-        return CommentAndRateService.getCommentAndRateByRate(rate);
-    }
-
-    @GetMapping("/getcommentandrate/{comment}")
-    public List<CommentAndRate> getCommentAndRateByComment(@PathVariable String comment){
-        return CommentAndRateService.getCommentAndRateByComment(comment);
-    }
-
-
 }

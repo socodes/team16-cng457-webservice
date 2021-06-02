@@ -11,6 +11,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT p FROM Product p INNER JOIN Brand b ON p.product_id = b.brand_id")
     public List<Product> getProductDetails();
 
+    /*
     @Query("SELECT p FROM Product p WHERE model LIKE %?1%")
     List<Product> getProductByModel(String model);
 
@@ -23,4 +24,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("SELECT p FROM Product p WHERE screensize LIKE %?1%")
     List<Product> getProductByScreensize(String screensize);
+    */
 }

@@ -28,7 +28,7 @@ public class ProductController {
         return productService.getProduct(id);
     }
 
-
+    /*
     @GetMapping("/getproductbymodel/{model}")
     public List<Product> getProductByModel(@PathVariable String model){
         return productService.getProductByModel(model);
@@ -48,6 +48,6 @@ public class ProductController {
     public List<Product> getProductByScreensize(@PathVariable String screensize){
         return productService.getProductByScreensize(screensize);
     }
-
+    */
 
 }
