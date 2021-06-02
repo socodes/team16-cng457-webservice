@@ -23,8 +23,13 @@ public class BrandController {
     }
 
     @GetMapping("/getbrandalldetails")
-    public List<Brand> getComputerDetails(){
+    public List<Brand> getBrandDetails(){
         return brandService.getBrandDetails();
+    }
+
+    @GetMapping("/getbrandbyname/{name}")
+    public List<Brand> getBrandByName(@PathVariable String name){
+        return brandService.getBrandByName(name);
     }
 
 }

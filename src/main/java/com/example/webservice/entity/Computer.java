@@ -10,8 +10,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 public class Computer extends Product{
-    private String ScreenResolution;
-    private String StorageCapacity;
-    private String Memory;
-    private String Processor;
+    private String screenResolution;
+    private String storageCapacity;
+    private String memory;
+    private String processor;
 }

@@ -17,31 +17,21 @@ public class AdditionalFeaturesController {
         return AdditionalFeaturesService.saveAdditionalFeatures(AdditionalFeatures);
     }
 
-    @GetMapping("/getadditionalfeatures/{id}")
-    public AdditionalFeatures getAdditionalFeatures(@PathVariable int id){
-        return AdditionalFeaturesService.getAdditionalFeatures(id);
-    }
-
     @GetMapping("/getadditionalfeaturesalldetails")
     public List<AdditionalFeatures> getAdditionalFeaturesDetails(){
         return AdditionalFeaturesService.getAdditionalFeaturesDetails();
     }
 
-    @GetMapping("/getadditionalfeaturestouchscreen")
-    public List<AdditionalFeatures> getAdditionalFeaturesTouchscreen(){
-        return AdditionalFeaturesService.getAdditionalFeaturesTouchscreen();
-    }
-    @GetMapping("/getadditionalfeaturesfacerecognition")
-    public List<AdditionalFeatures> getAdditionalFeaturesFaceRecognition(){
-        return AdditionalFeaturesService.getAdditionalFeaturesFaceRecognition();
-    }
-    @GetMapping("/getadditionalfeaturesfingerprintreader")
-    public List<AdditionalFeatures> getAdditionalFeaturesFingerprintReader(){
-        return AdditionalFeaturesService.getAdditionalFeaturesFingerprintReader();
+    @GetMapping("/getadditionalfeatures/{id}")
+    public AdditionalFeatures getAdditionalFeatures(@PathVariable int id){
+        return AdditionalFeaturesService.getAdditionalFeatures(id);
     }
 
-    @GetMapping("/getadditionalfeaturesextralongbatterylife")
-    public List<AdditionalFeatures> getAdditionalFeaturesExtraLongBatteryLife(){
-        return AdditionalFeaturesService.getAdditionalFeaturesExtraLongBatteryLife();
+
+    @GetMapping("/getadditionalfeaturesallbyname/{name}")
+    public List<AdditionalFeatures> getAdditionalFeaturesDetails(@PathVariable String name){
+        return AdditionalFeaturesService.getAdditionalFeaturesByName(name);
     }
+
+
 }

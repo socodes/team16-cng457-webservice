@@ -25,4 +25,20 @@ public class ProductService {
     public List<Product> getProductDetails(){
         return productRepository.getProductDetails();
     }
+
+    public List<Product> getProductByModel(String model) {
+        return productRepository.getProductByModel(model);
+    }
+
+    public List<Product> getProductByPrice(int price) {
+        return productRepository.getProductByPrice(price);
+    }
+
+    public List<Product> getProductByLabel(String label) {
+        return productRepository.getProductByLabel(label);
+    }
+
+    public List<Product> getProductByScreensize(String screensize) {
+        return productRepository.getProductByScreensize(screensize);
+    }
 }

@@ -10,16 +10,10 @@ public interface AdditionalFeaturesRepository extends JpaRepository<AdditionalFe
     @Query("SELECT f FROM AdditionalFeatures f")
     public List<AdditionalFeatures> getAdditionalFeaturesDetails();
 
-    @Query("SELECT f FROM AdditionalFeatures f WHERE afs_name LIKE '%touchscreen%' ") //select only touchscreen
-    public List<AdditionalFeatures> getAdditionalFeaturesTouchscreen();
 
-    @Query("SELECT f FROM AdditionalFeatures f WHERE afs_name LIKE '%face recognition%' ") //select only face recognition
-    public List<AdditionalFeatures> getAdditionalFeaturesFaceRecognition();
+    @Query("SELECT f FROM AdditionalFeatures f WHERE afs_name LIKE %?1%") //select only touchscreen
+    public List<AdditionalFeatures> getAdditionalFeaturesByName(String name);
 
-    @Query("SELECT f FROM AdditionalFeatures f WHERE afs_name LIKE '%fingerprint reader%' ") //select only fingerprint reader
-    public List<AdditionalFeatures> getAdditionalFeaturesFingerprintReader();
 
-    @Query("SELECT f FROM AdditionalFeatures f WHERE afs_name LIKE '%extralong battery life%' ") //select only extralong battery life
-    public List<AdditionalFeatures> getAdditionalFeaturesExtraLongBatteryLife();
 
 }

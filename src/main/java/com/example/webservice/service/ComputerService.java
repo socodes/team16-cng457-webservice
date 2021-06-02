@@ -34,4 +34,19 @@ public class ComputerService {
         return computerRepository.getComputersFromBrandandID(name,id);
     }
 
+    public List<Computer> getComputerByScreenResolution(String screenresolution) {
+        return computerRepository.getComputersByScreenResolution(screenresolution);
+    }
+
+    public List<Computer> getComputerByStorageCapacity(String storagecapacity) {
+        return computerRepository.getComputersByStorageCapacity(storagecapacity);
+    }
+
+    public List<Computer> getComputerByMemory(String memory) {
+        return computerRepository.getComputersByMemory(memory);
+    }
+
+    public List<Computer> getComputerByProcessor(String processor) {
+        return computerRepository.getComputersByProcessor(processor);
+    }
 }

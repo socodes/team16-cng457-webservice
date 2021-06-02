@@ -10,18 +10,12 @@ public interface CommentAndRateRepository extends JpaRepository<CommentAndRate, 
     @Query("SELECT c FROM CommentAndRate c")
     public List<CommentAndRate> getCommentAndRateDetails();
 
-    @Query("SELECT c FROM CommentAndRate c WHERE rate LIKE '%1%'")
-    public List<CommentAndRate> getCommentAndRate1();
+    @Query("SELECT c FROM CommentAndRate c WHERE rate LIKE %?1%")
+    public List<CommentAndRate> getCommentAndRateByRate(int rate);
 
-    @Query("SELECT c FROM CommentAndRate c WHERE rate LIKE '%2%'")
-    public List<CommentAndRate> getCommentAndRate2();
+    @Query("SELECT c FROM CommentAndRate c WHERE comment LIKE %?1%")
+    public List<CommentAndRate> getCommentAndRateByComment(String comment);
 
-    @Query("SELECT c FROM CommentAndRate c WHERE rate LIKE '%3%'")
-    public List<CommentAndRate> getCommentAndRate3();
 
-    @Query("SELECT c FROM CommentAndRate c WHERE rate LIKE '%4%'")
-    public List<CommentAndRate> getCommentAndRate4();
 
-    @Query("SELECT c FROM CommentAndRate c WHERE rate LIKE '%5%'")
-    public List<CommentAndRate> getCommentAndRate5();
 }

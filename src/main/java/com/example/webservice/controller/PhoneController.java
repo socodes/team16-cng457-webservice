@@ -33,9 +33,15 @@ public class PhoneController {
         return phoneService.getPhonesFromBrand(name);
     }
 
+    @GetMapping("/getphonesbyinternalmemory/{internalmemory}")
+    public List<Phone> getPhonesByInternalMemory(@PathVariable String internalMemory){
+        return phoneService.getPhonesByInternalMemory(internalMemory);
+    }
+
     @GetMapping("/getphonesbybrandandid/{name}/{id}")
     public List<Phone> getPhonesFromBrandandID(@PathVariable String name,@PathVariable int id){
         return phoneService.getPhonesFromBrandandID(name,id);
     }
+
 
 }
