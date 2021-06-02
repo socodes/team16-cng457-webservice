@@ -1,7 +1,6 @@
 package com.example.webservice.service;
 
 import com.example.webservice.entity.Computer;
-import com.example.webservice.entity.Phone;
 import com.example.webservice.repository.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +25,8 @@ public class ComputerService {
     public List<Computer> getComputerDetails(){
         return computerRepository.getComputerDetails();
     }
-    /*
+
     public List<Computer> getComputerFromBrand(String name){
         return computerRepository.getComputerFromBrand(name);
-    } */
+    }
 }
