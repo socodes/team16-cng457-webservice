@@ -1,6 +1,5 @@
 package com.example.webservice.controller;
 
-import com.example.webservice.entity.Phone;
 import com.example.webservice.entity.Product;
 import com.example.webservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

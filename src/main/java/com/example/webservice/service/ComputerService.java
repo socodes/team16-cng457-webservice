@@ -1,7 +1,6 @@
 package com.example.webservice.service;
 
 import com.example.webservice.entity.Computer;
-import com.example.webservice.entity.Phone;
 import com.example.webservice.repository.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
