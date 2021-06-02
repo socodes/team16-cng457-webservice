@@ -30,9 +30,14 @@ public class PhoneService {
         return phoneRepository.getPhonesFromBrand(name);
     }
 
+    public List<Phone> getPhonesByInternalMemory(String internalMemory) {
+        return phoneRepository.getPhonesByInternalMemory(internalMemory);
+    }
+
     public List<Phone> getPhonesFromBrandandID(String name,int id){
         return phoneRepository.getPhonesFromBrandandID(name,id);
     }
+
 
 
 }

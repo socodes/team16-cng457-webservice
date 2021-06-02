@@ -25,4 +25,7 @@ public class BrandService {
     public List<Brand> getBrandDetails(){
         return brandRepository.getBrandDetails();
     }
+
+    public List<Brand> getBrandByName(String name) { return brandRepository.getBrandByName(name);
+    }
 }

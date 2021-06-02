@@ -28,28 +28,15 @@ public class CommentAndRateController {
         return CommentAndRateService.getCommentAndRateDetails();
     }
 
-    @GetMapping("/getcommentandrate1")
-    public List<CommentAndRate> getCommentAndRate1(){
-        return CommentAndRateService.getCommentAndRate1();
+    @GetMapping("/getcommentandrate/{rate}")
+    public List<CommentAndRate> getCommentAndRateByRate(@PathVariable int rate){
+        return CommentAndRateService.getCommentAndRateByRate(rate);
     }
 
-    @GetMapping("/getcommentandrate2")
-    public List<CommentAndRate> getCommentAndRate2(){
-        return CommentAndRateService.getCommentAndRate2();
+    @GetMapping("/getcommentandrate/{comment}")
+    public List<CommentAndRate> getCommentAndRateByComment(@PathVariable String comment){
+        return CommentAndRateService.getCommentAndRateByComment(comment);
     }
 
-    @GetMapping("/getcommentandrate3")
-    public List<CommentAndRate> getCommentAndRate3(){
-        return CommentAndRateService.getCommentAndRate3();
-    }
 
-    @GetMapping("/getcommentandrate4")
-    public List<CommentAndRate> getCommentAndRate4(){
-        return CommentAndRateService.getCommentAndRate4();
-    }
-
-    @GetMapping("/getcommentandrate5")
-    public List<CommentAndRate> getCommentAndRate5(){
-        return CommentAndRateService.getCommentAndRate5();
-    }
 }

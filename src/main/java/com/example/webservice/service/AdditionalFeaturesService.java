@@ -17,26 +17,17 @@ public class AdditionalFeaturesService {
         return AdditionalFeaturesRepository.save(a);
     }
 
-    public AdditionalFeatures getAdditionalFeatures(int id)
-    {
-        return AdditionalFeaturesRepository.findById(id).orElse(null);
-    }
     public List<AdditionalFeatures> getAdditionalFeaturesDetails(){
         return AdditionalFeaturesRepository.getAdditionalFeaturesDetails();
     }
 
-    public List<AdditionalFeatures> getAdditionalFeaturesTouchscreen(){
-        return AdditionalFeaturesRepository.getAdditionalFeaturesTouchscreen();
+    public AdditionalFeatures getAdditionalFeatures(int id)
+    {
+        return AdditionalFeaturesRepository.findById(id).orElse(null);
     }
 
-    public List<AdditionalFeatures> getAdditionalFeaturesFaceRecognition(){
-        return AdditionalFeaturesRepository.getAdditionalFeaturesFaceRecognition();
-    }
 
-    public List<AdditionalFeatures> getAdditionalFeaturesFingerprintReader(){
-        return AdditionalFeaturesRepository.getAdditionalFeaturesFingerprintReader();
-    }
-    public List<AdditionalFeatures> getAdditionalFeaturesExtraLongBatteryLife(){
-        return AdditionalFeaturesRepository.getAdditionalFeaturesExtraLongBatteryLife();
+    public List<AdditionalFeatures> getAdditionalFeaturesByName(String name) {
+        return AdditionalFeaturesRepository.getAdditionalFeaturesByName(name);
     }
 }

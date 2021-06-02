@@ -26,22 +26,12 @@ public class CommentAndRateService {
         return CommentAndRateRepository.getCommentAndRateDetails();
     }
 
-    public List<CommentAndRate> getCommentAndRate1(){
-        return CommentAndRateRepository.getCommentAndRate1();
+    public List<CommentAndRate> getCommentAndRateByRate(int rate){
+        return CommentAndRateRepository.getCommentAndRateByRate(rate);
+    }
+    public List<CommentAndRate> getCommentAndRateByComment(String comment){
+        return CommentAndRateRepository.getCommentAndRateByComment(comment);
     }
 
-    public List<CommentAndRate> getCommentAndRate2(){
-        return CommentAndRateRepository.getCommentAndRate2();
-    }
 
-    public List<CommentAndRate> getCommentAndRate3(){
-        return CommentAndRateRepository.getCommentAndRate3();
-    }
-
-    public List<CommentAndRate> getCommentAndRate4(){
-        return CommentAndRateRepository.getCommentAndRate4();
-    }
-    public List<CommentAndRate> getCommentAndRate5(){
-        return CommentAndRateRepository.getCommentAndRate5();
-    }
 }
