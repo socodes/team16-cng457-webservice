@@ -1,6 +1,8 @@
 package com.example.webservice.controller;
 
 import com.example.webservice.entity.Computer;
+import com.example.webservice.entity.Phone;
+import com.example.webservice.entity.Product;
 import com.example.webservice.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +15,12 @@ public class ComputerController {
     ComputerService computerService;
 
     @PostMapping("/addcomputer")
-    public Computer saveComputer(@RequestBody Computer c){
+    public Product saveComputer(@RequestBody Computer c){
         return computerService.saveComputer(c);
     }
 
     @GetMapping("/getcomputer/{id}")
-    public Computer getComputer(@PathVariable int id){
+    public Product getComputer(@PathVariable int id){
         return computerService.getComputer(id);
     }
 
@@ -27,8 +29,9 @@ public class ComputerController {
         return computerService.getComputerDetails();
     }
 
+    /*
     @GetMapping("/getcomputersbybrand/{name}")
     public List<Computer> getComputerFromBrand(@PathVariable String name){
         return computerService.getComputerFromBrand(name);
-    }
+    }*/
 }

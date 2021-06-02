@@ -1,6 +1,9 @@
 package com.example.webservice.service;
 
+import com.example.webservice.entity.AdditionalFeatures;
+import com.example.webservice.entity.Brand;
 import com.example.webservice.entity.CommentAndRate;
+import com.example.webservice.repository.BrandRepository;
 import com.example.webservice.repository.CommentAndRateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

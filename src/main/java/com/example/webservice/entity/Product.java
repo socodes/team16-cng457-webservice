@@ -26,7 +26,14 @@ public class Product {
     @JoinTable(name = "product_has_afs", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "productList"))
     private List<AdditionalFeatures> additionalFeaturesList;
 
-    @OneToMany(mappedBy = "brand_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne // owning
+    private Brand brandList;
+    /*
+    @ManyToMany //owning
+    @JoinTable(name = , joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "productList"))
     private List<Brand> brandList;
+    */
+
+
 
 }

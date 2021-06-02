@@ -1,6 +1,7 @@
 package com.example.webservice.controller;
 
 
+import com.example.webservice.entity.AdditionalFeatures;
 import com.example.webservice.entity.CommentAndRate;
 import com.example.webservice.service.CommentAndRateService;
 import org.springframework.beans.factory.annotation.Autowired;
