@@ -9,7 +9,11 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class AdditionalFeatures {
-    private String afs_name;
+    private boolean faceRecognition;
+    private boolean allDayBatteryLife;
+    private boolean extraLongBatteryLife;
+    private boolean touchscreen;
+    private boolean fingerprintReader;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

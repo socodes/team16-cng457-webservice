@@ -23,14 +23,24 @@ public class PhoneController {
         return phoneService.getPhone(id);
     }
 
+
     @GetMapping("/getphonealldetails")
     public List<Phone> getPhoneDetails(){
         return phoneService.getPhoneDetails();
     }
 
+
+
     @GetMapping("/getphonesbybrand/{name}")
     public List<Phone> getPhonesFromBrand(@PathVariable String name){
         return phoneService.getPhonesFromBrand(name);
     }
+
+
+    /*
+    @GetMapping("/getphonesbybrand/{name}")
+    public List<Phone> getPhonesFromBrand(@PathVariable String name){
+        return phoneService.getPhonesFromBrand(name);
+    } */
 
 }
