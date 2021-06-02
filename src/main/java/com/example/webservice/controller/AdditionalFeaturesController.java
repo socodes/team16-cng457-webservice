@@ -26,7 +26,7 @@ public class AdditionalFeaturesController {
     public List<AdditionalFeatures> getAdditionalFeaturesDetails(){
         return AdditionalFeaturesService.getAdditionalFeaturesDetails();
     }
-    
+
     @GetMapping("/getadditionalfeaturestouchscreen")
     public List<AdditionalFeatures> getAdditionalFeaturesTouchscreen(){
         return AdditionalFeaturesService.getAdditionalFeaturesTouchscreen();
