@@ -26,27 +26,37 @@ public class ComputerService {
         return computerRepository.getComputerDetails();
     }
 
-    public List<Computer> getComputerFromBrand(String name){
-        return computerRepository.getComputerFromBrand(name);
-    }
+    public List<Computer> getComputerByScreenResolution(String screenresolution) { return computerRepository.getComputersByScreenResolution(screenresolution); }
 
-    public List<Computer> getComputerFromBrandandID(String name,int id){
-        return computerRepository.getComputersFromBrandandID(name,id);
-    }
-
-    public List<Computer> getComputerByScreenResolution(String screenresolution) {
-        return computerRepository.getComputersByScreenResolution(screenresolution);
-    }
-
-    public List<Computer> getComputerByStorageCapacity(String storagecapacity) {
-        return computerRepository.getComputersByStorageCapacity(storagecapacity);
-    }
+    public List<Computer> getComputerByStorageCapacity(String storagecapacity) { return computerRepository.getComputersByStorageCapacity(storagecapacity); }
 
     public List<Computer> getComputerByMemory(String memory) {
         return computerRepository.getComputersByMemory(memory);
     }
 
-    public List<Computer> getComputerByProcessor(String processor) {
-        return computerRepository.getComputersByProcessor(processor);
+    public List<Computer> getComputerByProcessor(String processor) { return computerRepository.getComputersByProcessor(processor); }
+
+    public List<Computer> getComputerByModel(String model) { return computerRepository.getComputerByModel(model); }
+
+    public List<Computer> getComputerByPrice(int price) { return computerRepository.getComputerByPrice(price); }
+
+    public List<Computer> getComputerByLabel(String label) { return computerRepository.getComputerByLabel(label); }
+
+    public List<Computer> getComputerByScreensize(String screensize) { return computerRepository.getComputerByScreensize(screensize); }
+
+    public List<Computer> getComputersByBrand(String name) { return computerRepository.getComputersByBrand(name); }
+
+    public List<Computer> getComputersByComment(String comment) { return computerRepository.getComputersByComment(comment); }
+
+    public List<Computer> getComputersByRate(int rate) { return computerRepository.getComputersByRate(rate); }
+
+    public List<Computer> getComputersByAdditionalFeature(String additionalfeature) { return computerRepository.getComputersByAdditionalFeature(additionalfeature); }
+
+
+    /*
+    public List<Computer> getComputerFromBrandAndID(String name, int id){
+        return computerRepository.getComputersFromBrandAndID(name, id);
     }
+
+     */
 }

@@ -1,6 +1,7 @@
 package com.example.webservice.controller;
 
 import com.example.webservice.entity.Computer;
+import com.example.webservice.entity.Phone;
 import com.example.webservice.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,7 @@ public class ComputerController {
     ComputerService computerService;
 
     @PostMapping("/addcomputer")
-    public Computer saveComputer(@RequestBody Computer c){
-        return computerService.saveComputer(c);
-    }
+    public Computer saveComputer(@RequestBody Computer c){ return computerService.saveComputer(c); }
 
     @GetMapping("/getcomputeralldetails")
     public List<Computer> getComputerDetails(){
@@ -25,17 +24,6 @@ public class ComputerController {
     @GetMapping("/getcomputer/{id}")
     public Computer getComputer(@PathVariable int id){
         return computerService.getComputer(id);
-    }
-
-    @GetMapping("/getcomputersbybrandandid/{name}/{id}")
-    public List<Computer> getComputersFromBrandandID(@PathVariable String name,@PathVariable int id){
-        return computerService.getComputerFromBrandandID(name,id);
-    }
-
-
-    @GetMapping("/getcomputersbybrand/{name}")
-    public List<Computer> getComputerFromBrand(@PathVariable String name){
-        return computerService.getComputerFromBrand(name);
     }
 
     @GetMapping("/getcomputersbyscreenresolution/{screenresolution}")
@@ -58,13 +46,51 @@ public class ComputerController {
         return computerService.getComputerByProcessor(processor);
     }
 
-
-
-
-
     /*
+    @GetMapping("/getcomputersbybrandandid/{name}/{id}")
+    public List<Computer> getComputersFromBrandAndID(@PathVariable String name,@PathVariable int id){
+        return computerService.getComputerFromBrandAndID(name, id);
+    }
+    */
 
-    private String Processor;
-*/
+    @GetMapping("/getcomputersbymodel/{model}")
+    public List<Computer> getComputerByModel(@PathVariable String model){
+        return computerService.getComputerByModel(model);
+    }
+
+    @GetMapping("/getcomputersbyprice/{price}")
+    public List<Computer> getComputerByPrice(@PathVariable int price){
+        return computerService.getComputerByPrice(price);
+    }
+
+    @GetMapping("/getcomputersbylabel/{label}")
+    public List<Computer> getComputerByLabel(@PathVariable String label){
+        return computerService.getComputerByLabel(label);
+    }
+
+    @GetMapping("/getcomputersbyscreensize/{screensize}")
+    public List<Computer> getComputerByScreensize(@PathVariable String screensize){
+        return computerService.getComputerByScreensize(screensize);
+    }
+
+    @GetMapping("/getcomputersbybrand/{brand}")
+    public List<Computer> getComputersByBrand(@PathVariable String name){
+        return computerService.getComputersByBrand(name);
+    }
+
+    @GetMapping("/getcomputersbycomment/{comment}")
+    public List<Computer> getComputersByComment(@PathVariable String comment){
+        return computerService.getComputersByComment(comment);
+    }
+
+    @GetMapping("/getcomputersbyrate/{rate}")
+    public List<Computer> getComputersByRate(@PathVariable int rate){
+        return computerService.getComputersByRate(rate);
+    }
+
+    @GetMapping("/getcomputersbyadditionalfeature/{additionalfeature}")
+    public List<Computer> getComputersByAdditionalFeature(@PathVariable String additionalfeature){
+        return computerService.getComputersByAdditionalFeature(additionalfeature);
+    }
 
 }

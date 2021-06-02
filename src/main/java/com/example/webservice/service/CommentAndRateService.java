@@ -25,13 +25,4 @@ public class CommentAndRateService {
     public List<CommentAndRate> getCommentAndRateDetails(){
         return CommentAndRateRepository.getCommentAndRateDetails();
     }
-
-    public List<CommentAndRate> getCommentAndRateByRate(int rate){
-        return CommentAndRateRepository.getCommentAndRateByRate(rate);
-    }
-    public List<CommentAndRate> getCommentAndRateByComment(String comment){
-        return CommentAndRateRepository.getCommentAndRateByComment(comment);
-    }
-
-
 }
