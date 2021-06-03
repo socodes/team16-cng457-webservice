@@ -1,6 +1,7 @@
 package com.example.webservice.service;
 
 import com.example.webservice.entity.Computer;
+import com.example.webservice.entity.Phone;
 import com.example.webservice.repository.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,25 @@ public class ComputerService {
 
     public List<Computer> getComputersByAdditionalFeature(String additionalfeature) { return computerRepository.getComputersByAdditionalFeature(additionalfeature); }
 
+    public List<Computer> getComputersByBrandAndComment(String name, String comment) {
+        return computerRepository.getComputersByBrandAndComment(name, comment);
+    } //EDA
+
+    public List<Computer> getComputersByBrandAndRate(String name, int rate) {
+        return  computerRepository.getComputersByBrandAndRate(name, rate);
+    } //EDA
+
+    public List<Computer> getComputersByAdditionalFeatureAndComment(String additionalfeature, String comment) {
+        return  computerRepository.getComputersByAdditionalFeatureAndComment(additionalfeature, comment);
+    } //EDA
+
+    public List<Computer> getComputersByAdditionalFeatureAndRate(String additionalfeature, int rate) {
+        return  computerRepository.getComputersByAdditionalFeatureAndRate(additionalfeature, rate);
+    } //EDA
+
+    public List<Computer> getComputersByAdditionalFeatureAndBrand(String additionalfeature, String name) {
+        return  computerRepository.getComputersByAdditionalFeatureAndBrand(additionalfeature, name);
+    }
 
     /*
     public List<Computer> getComputerFromBrandAndID(String name, int id){
@@ -59,4 +79,6 @@ public class ComputerService {
     }
 
      */
+
+
 }

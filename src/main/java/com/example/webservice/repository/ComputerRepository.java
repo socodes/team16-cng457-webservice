@@ -1,6 +1,7 @@
 package com.example.webservice.repository;
 
 import com.example.webservice.entity.Computer;
+import com.example.webservice.entity.Phone;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -45,6 +46,41 @@ public interface ComputerRepository extends JpaRepository<Computer, Integer> {
 
     @Query("SELECT c FROM Computer c INNER JOIN AdditionalFeatures f ON c.product_id = f.afs_id WHERE f.afs_name LIKE %?1%")
     List<Computer> getComputersByAdditionalFeature(String additionalfeature);
+
+    @Query(value= "SELECT * FROM computer\n" +
+            "INNER JOIN product ON computer.product_id = product.product_id\n" +
+            "INNER JOIN brand ON computer.product_id = brand.brand_id\n" +
+            "INNER JOIN comment_and_rate ON computer.product_id = comment_and_rate.comment_id\n" +
+            "WHERE brand.brand_name LIKE %?1% AND comment_and_rate.comment LIKE %?2%", nativeQuery = true)
+    List<Computer> getComputersByBrandAndComment(String name, String comment); //EDA
+
+    @Query(value= "SELECT * FROM computer\n" +
+            "INNER JOIN product ON computer.product_id = product.product_id\n" +
+            "INNER JOIN brand ON computer.product_id = brand.brand_id\n" +
+            "INNER JOIN comment_and_rate ON computer.product_id = comment_and_rate.comment_id\n" +
+            "WHERE brand.brand_name LIKE %?1% AND comment_and_rate.rate LIKE %?2%", nativeQuery = true)
+    List<Computer> getComputersByBrandAndRate(String name, int rate); //EDA
+
+    @Query(value= "SELECT * FROM computer\n" +
+            "INNER JOIN product ON computer.product_id = product.product_id\n" +
+            "INNER JOIN additional_features ON computer.product_id = additional_features.afs_id\n" +
+            "INNER JOIN comment_and_rate ON computer.product_id = comment_and_rate.comment_id\n" +
+            "WHERE additional_features.afs_name LIKE %?1% AND comment_and_rate.comment LIKE %?2%", nativeQuery = true)
+    List<Computer> getComputersByAdditionalFeatureAndComment(String additionalfeature, String comment);
+
+    @Query(value= "SELECT * FROM computer\n" +
+            "INNER JOIN product ON computer.product_id = product.product_id\n" +
+            "INNER JOIN additional_features ON computer.product_id = additional_features.afs_id\n" +
+            "INNER JOIN comment_and_rate ON computer.product_id = comment_and_rate.comment_id\n" +
+            "WHERE additional_features.afs_name LIKE %?1% AND comment_and_rate.rate LIKE %?2%", nativeQuery = true)
+    List<Computer> getComputersByAdditionalFeatureAndRate(String additionalfeature, int rate);
+
+    @Query(value= "SELECT * FROM computer\n" +
+            "INNER JOIN product ON computer.product_id = product.product_id\n" +
+            "INNER JOIN additional_features ON computer.product_id = additional_features.afs_id\n" +
+            "INNER JOIN brand ON computer.product_id = brand.brand_id\n" +
+            "WHERE additional_features.afs_name LIKE %?1% AND brand.brand_name LIKE %?2%", nativeQuery = true)
+    List<Computer> getComputersByAdditionalFeatureAndBrand(String additionalfeature, String name);
 
 
     /*
