@@ -44,4 +44,39 @@ public class PhoneService {
 
     public List<Phone> getPhonesByAdditionalFeature(String additionalfeature) { return phoneRepository.getPhonesByAdditionalFeature(additionalfeature); }
 
+    public List<Phone> getPhonesByInternalMemoryBetween(int minval, int maxval) {
+        return phoneRepository.getPhonesByInternalMemoryBetween(minval, maxval);
+    } //EDA
+
+    public List<Phone> getPhonesByBrandAndComment(String name, String comment) {
+        return phoneRepository.getPhonesByBrandAndComment(name, comment);
+    } //EDA
+
+    public List<Phone> getPhonesByBrandAndRate(String name, int rate) {
+        return phoneRepository.getPhonesByBrandAndRate(name, rate);
+    } //EDA
+
+    public List<Phone> getPhonesByAdditionalFeatureAndComment(String additionalfeature, String comment) {
+        return phoneRepository.getPhonesByAdditionalFeatureAndComment(additionalfeature, comment);
+    }//EDA
+
+
+    public List<Phone> getPhonesByAdditionalFeatureAndRate(String additionalfeature, int rate) {
+        return phoneRepository.getPhonesByAdditionalFeatureAndRate(additionalfeature, rate);
+    } //EDA
+
+
+    public List<Phone> getPhonesByAdditionalFeatureAndBrand(String additionalfeature, String name) {
+        return phoneRepository.getPhonesByAdditionalFeatureAndBrand(additionalfeature, name);
+    }  //EDA
+/*
+    public List<Phone> getPhonesByBrandAndCommentAndAdditionalFeature(String name, String comment, String additionalfeature) {
+        return phoneRepository.getPhonesByBrandAndCommentAndAdditionalFeature(name, comment, additionalfeature);
+    }
+    */
+    /*
+    public List<Phone> getPhonesByInternalMemoryAndComment(String internalMemory, String comment) {
+        return phoneRepository.getPhonesByInternalMemoryAndComment(internalMemory,comment);
+    } //EDA
+*/
 }

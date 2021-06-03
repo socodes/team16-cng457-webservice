@@ -38,9 +38,65 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer> {
     @Query("SELECT p FROM Phone p INNER JOIN CommentAndRate c ON p.product_id = c.comment_id WHERE c.comment LIKE %?1%")
     List<Phone> getPhonesByComment(String comment);
 
-    @Query("SELECT p FROM Phone p INNER JOIN CommentAndRate c ON p.product_id = c.comment_id WHERE c.rate LIKE ?1")
+    @Query("SELECT p FROM Phone p INNER JOIN CommentAndRate c ON p.product_id = c.comment_id WHERE c.rate LIKE %?1%")
     List<Phone> getPhonesByRate(int rate);
 
     @Query("SELECT p FROM Phone p INNER JOIN AdditionalFeatures f ON p.product_id = f.afs_id WHERE f.afs_name LIKE %?1%")
     List<Phone> getPhonesByAdditionalFeature(String additionalfeature);
+
+    @Query(value= "SELECT * FROM Brand\n" +
+            "INNER JOIN Product ON Brand.brand_id = Product.product_id\n" +
+            "INNER JOIN Phone ON Product.product_id = Phone.product_id\n" +
+            "WHERE internal_memory BETWEEN ?1 AND ?2", nativeQuery = true)
+    public List<Phone> getPhonesByInternalMemoryBetween(int minval, int maxval); //EDA
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN brand ON phone.product_id = brand.brand_id\n" +
+            "INNER JOIN comment_and_rate ON phone.product_id = comment_and_rate.comment_id\n" +
+            "WHERE brand.brand_name LIKE %?1% AND comment_and_rate.comment LIKE %?2%", nativeQuery = true)
+    public List<Phone> getPhonesByBrandAndComment(String name, String comment); //EDA
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN brand ON phone.product_id = brand.brand_id\n" +
+            "INNER JOIN comment_and_rate ON phone.product_id = comment_and_rate.comment_id\n" +
+            "WHERE brand.brand_name LIKE %?1% AND comment_and_rate.rate LIKE %?2%", nativeQuery = true)
+    public List<Phone> getPhonesByBrandAndRate(String name, int rate); //EDA
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN additional_features ON phone.product_id = additional_features.afs_id\n" +
+            "INNER JOIN comment_and_rate ON phone.product_id = comment_and_rate.comment_id\n" +
+            "WHERE additional_features.afs_name LIKE %?1% AND comment_and_rate.comment LIKE %?2%", nativeQuery = true)
+    public List<Phone> getPhonesByAdditionalFeatureAndComment(String additionalfeature, String comment); //EDA
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN additional_features ON phone.product_id = additional_features.afs_id\n" +
+            "INNER JOIN comment_and_rate ON phone.product_id = comment_and_rate.comment_id\n" +
+            "WHERE additional_features.afs_name LIKE %?1% AND comment_and_rate.rate LIKE %?2%", nativeQuery = true)
+    public List<Phone> getPhonesByAdditionalFeatureAndRate(String additionalfeature, int rate); //EDA
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN additional_features ON phone.product_id = additional_features.afs_id\n" +
+            "INNER JOIN brand ON phone.product_id = brand.brand_id\n" +
+            "WHERE additional_features.afs_name LIKE %?1% AND brand.brand_name LIKE %?2%", nativeQuery = true)
+    List<Phone> getPhonesByAdditionalFeatureAndBrand(String additionalfeature, String name);  //EDA
+/*
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN brand ON phone.product_id = brand.brand_id\n" +
+            "INNER JOIN comment_and_rate ON phone.product_id = comment_and_rate.comment_id\n" +
+            "INNER JOIN additional_features ON phone.product_id = additional_features.afs_id\n" +
+            "WHERE brand.brand_name LIKE %?1% AND comment_and_rate.comment LIKE %?2% AND additional_features.afs_name LIKE %?3%", nativeQuery = true)
+    List<Phone> getPhonesByBrandAndCommentAndAdditionalFeature(String name, String comment, String additionalfeature);
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN comment_and_rate ON phone.product_id = comment_and_rate.comment_id\n" +
+            "WHERE phone.internal_memory LIKE %?1% AND comment_and_rate.comment LIKE %?2%", nativeQuery = true)
+    List<Phone> getPhonesByInternalMemoryAndComment(String internalMemory, String comment); //EDA
+ */
 }

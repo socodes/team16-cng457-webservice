@@ -79,8 +79,40 @@ public class PhoneController {
     public List<Phone> getPhonesByAdditionalFeature(@PathVariable String additionalfeature){
         return phoneService.getPhonesByAdditionalFeature(additionalfeature);
     }
+    @GetMapping("/getphonesbyinternalmemorybetween/{minval}/{maxval}") //EDA
+    public List<Phone> getPhonesByInternalMemoryBetween(@PathVariable int minval, @PathVariable int maxval){
+        return phoneService.getPhonesByInternalMemoryBetween(minval, maxval);
+    }
 
+    @GetMapping("/getphonesbybrandandcomment/{name}/{comment}") //EDA
+    public List<Phone> getPhonesByBrandAndComment(@PathVariable String name, @PathVariable String comment){
+        return phoneService.getPhonesByBrandAndComment(name,comment);
+    }
 
+    @GetMapping("/getphonesbybrandandrate/{name}/{rate}") //EDA
+    public List<Phone> getPhonesByBrandAndRate(@PathVariable String name, @PathVariable int rate){
+        return phoneService.getPhonesByBrandAndRate(name, rate);
+    }
 
+    @GetMapping("/getphonesbyadditionalfeatureandcomment/{additionalfeature}/{comment}") //EDA
+    public List<Phone> getPhonesByAdditionalFeatureAndComment(@PathVariable String additionalfeature, @PathVariable String comment){
+        return phoneService.getPhonesByAdditionalFeatureAndComment(additionalfeature, comment);
+    }
+
+    @GetMapping("/getphonesbyadditionalfeatureandrate/{additionalfeature}/{rate}") //EDA
+    public List<Phone> getPhonesByAdditionalFeatureAndRate(@PathVariable String additionalfeature, @PathVariable int rate){
+        return phoneService.getPhonesByAdditionalFeatureAndRate(additionalfeature, rate);
+    }
+
+    @GetMapping("/getphonesbyadditionalfeatureandbrand/{additionalfeature}/{name}") //EDA
+    public List<Phone> getPhonesByAdditionalFeatureAndBrand(@PathVariable String additionalfeature, @PathVariable String name){
+        return phoneService.getPhonesByAdditionalFeatureAndBrand(additionalfeature, name);
+    }
+    /*
+    @GetMapping("/getphonesbybrandandcommentandrate/{name}/{comment}/{additionalfeature}") //EDA
+    public List<Phone> getPhonesByBrandAndCommentAndAdditionalFeature(@PathVariable String name, @PathVariable String comment, @PathVariable String additionalfeature){
+        return phoneService.getPhonesByBrandAndCommentAndAdditionalFeature(name,comment, additionalfeature);
+    }
+*/
 
 }

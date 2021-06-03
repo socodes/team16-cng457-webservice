@@ -93,4 +93,29 @@ public class ComputerController {
         return computerService.getComputersByAdditionalFeature(additionalfeature);
     }
 
+    @GetMapping("/getcomputersbybrandandcomment/{name}/{comment}") //EDA
+    public List<Computer> getComputersByBrandAndComment(@PathVariable String name, @PathVariable String comment){
+        return computerService.getComputersByBrandAndComment(name,comment);
+    }
+
+    @GetMapping("/getcomputersbybrandandrate/{name}/{rate}") //EDA
+    public List<Computer> getComputersByBrandAndRate(@PathVariable String name, @PathVariable int rate){
+        return computerService.getComputersByBrandAndRate(name, rate);
+    }
+
+    @GetMapping("/getcomputersbyadditionalfeatureandcomment/{additionalfeature}/{comment}") //EDA
+    public List<Computer> getComputersByAdditionalFeatureAndComment(@PathVariable String additionalfeature, @PathVariable String comment){
+        return computerService.getComputersByAdditionalFeatureAndComment(additionalfeature, comment);
+    }
+
+    @GetMapping("/getcomputersbyadditionalfeatureandrate/{additionalfeature}/{rate}") //EDA
+    public List<Computer> getComputersByAdditionalFeatureAndRate(@PathVariable String additionalfeature, @PathVariable int rate){
+        return computerService.getComputersByAdditionalFeatureAndRate(additionalfeature, rate);
+    }
+
+    @GetMapping("/getcomputersbyadditionalfeatureandbrand/{additionalfeature}/{name}") //EDA
+    public List<Computer> getComputersByAdditionalFeatureAndBrand(@PathVariable String additionalfeature, @PathVariable String name){
+        return computerService.getComputersByAdditionalFeatureAndBrand(additionalfeature, name);
+    }
+
 }
