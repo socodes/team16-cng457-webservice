@@ -100,6 +100,45 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer> {
             "WHERE product.label = ?1 AND product.model LIKE %?2%", nativeQuery = true)
     List<Phone> getPhonesByLabelAndModel(String label, String model);//Muhammed
 
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "WHERE product.label = ?1 AND phone.internalmemory LIKE %?2%", nativeQuery = true)
+    List<Phone> getPhonesByInternalMemoryAndLabel(String label, String internalmemory);
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "WHERE product.screensize = ?1 AND phone.internalmemory LIKE %?2%", nativeQuery = true)
+    List<Phone> getPhonesByInternalMemoryAndScreensize(String screensize, String internalmemory);
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "WHERE product.model = ?1 AND phone.internalmemory LIKE %?2%", nativeQuery = true)
+    List<Phone> getPhonesByInternalMemoryAndModel(String model, String internalmemory);
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN additional_features ON phone.product_id = additional_features.afs_id\n" +
+            "WHERE additional_features.afs_name LIKE %?1% AND phone.internalMemory LIKE %?2%", nativeQuery = true)
+    List<Phone> getPhonesByInternalMemoryAndAdditionalFeature(String additionalfeature, String internalmemory);
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN brand ON phone.product_id = brand.brand_id\n" +
+            "WHERE phone.internalMemory LIKE %?2% AND brand.brand_name LIKE %?1%", nativeQuery = true)
+    List<Phone> getPhonesByInternalMemoryAndName(String name, String internalmemory);
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN comment_and_rate ON phone.product_id = comment_and_rate.comment_id\n" +
+            "WHERE phone.internalMemory LIKE %?2% AND comment_and_rate.rate LIKE %?1%", nativeQuery = true)
+    List<Phone> getPhonesByInternalMemoryAndRate(String rate, String internalmemory);
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN comment_and_rate ON phone.product_id = comment_and_rate.comment_id\n" +
+            "WHERE phone.internalMemory LIKE %?2% AND comment_and_rate.comment LIKE %?1%", nativeQuery = true)
+    List<Phone> getPhonesByInternalMemoryAndComment(String comment, String internalmemory);
+
 /*
     @Query(value= "SELECT * FROM phone\n" +
             "INNER JOIN product ON phone.product_id = product.product_id\n" +
