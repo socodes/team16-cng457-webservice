@@ -17,12 +17,9 @@ public class PhoneService {
         return phoneRepository.save(p);
     }
 
-    public Phone getPhone(int id)
-    {
-        return phoneRepository.findById(id).orElse(null);
-    }
+    public Phone getPhone(int id) { return phoneRepository.findById(id).orElse(null); }
 
-    public List<Phone> getPhoneDetails(){ return phoneRepository.getPhoneDetails(); }
+    public List<Phone> getPhoneDetails() { return phoneRepository.findAll(); }
 
     public List<Phone> getPhonesByInternalMemory(String internalMemory) { return phoneRepository.getPhonesByInternalMemory(internalMemory); }
     
@@ -124,4 +121,5 @@ public class PhoneService {
         return phoneRepository.getPhonesByInternalMemoryAndComment(internalMemory,comment);
     } //EDA
 */
+
 }
