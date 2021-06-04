@@ -131,4 +131,180 @@ public class ComputerController {
         return computerService.getComputersByLabelAndModel(label, model);
     }
 
+    @GetMapping("/getcomputersbysearch")
+    public List<Computer> getPhonesBySearch(@RequestParam(required = false) Integer product_id,
+                                            @RequestParam(required = false) String model,
+                                            @RequestParam(required = false) Integer price,
+                                            @RequestParam(required = false) String label,
+                                            @RequestParam(required = false) Integer screensize,
+                                            @RequestParam(required = false) String screen_resolution,
+                                            @RequestParam(required = false) String storage_capacity,
+                                            @RequestParam(required = false) String memory,
+                                            @RequestParam(required = false) String processor,
+                                            @RequestParam(required = false) Integer minprice,
+                                            @RequestParam(required = false) Integer maxprice,
+                                            @RequestParam(required = false) Integer minscreensize,
+                                            @RequestParam(required = false) Integer maxscreensize,
+                                            @RequestParam(required = false) String afs_name,
+                                            @RequestParam(required = false) String comment,
+                                            @RequestParam(required = false) Integer rate,
+                                            @RequestParam(required = false) String brand_name) {
+
+        List<Computer> computerList = computerService.getComputerDetails();
+
+        if (product_id != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getProduct_id() != product_id) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if(model != null){
+            for(int i = 0; i < computerList.size(); i++){
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getModel() != model) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+
+        }
+
+        if (price != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getPrice() != price) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (label != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getLabel() != label) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (screensize != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getScreensize() != screensize) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (screen_resolution != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getScreenResolution() != screen_resolution) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (storage_capacity != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getStorageCapacity() != storage_capacity) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (memory != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getMemory() != memory) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (processor != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getProcessor() != processor) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (minprice != null && maxprice != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (maxprice < currentComputer.getPrice() && currentComputer.getPrice() < minprice) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (minscreensize != null && maxscreensize != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (maxscreensize < currentComputer.getScreensize() && currentComputer.getScreensize() < minscreensize) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (afs_name != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getAdditionalFeaturesList().get(i).getAfs_name() != afs_name) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (comment != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getCommentAndRatesList().get(i).getComment() != comment) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (rate != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getCommentAndRatesList().get(i).getRate() != rate) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+
+        if (brand_name != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getBrandList().get(i).getBrand_name() != brand_name) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        return computerList;
+    }
+
 }

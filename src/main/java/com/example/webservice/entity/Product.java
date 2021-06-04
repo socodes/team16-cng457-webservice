@@ -17,7 +17,7 @@ public class Product {
     private String model;
     private int price;
     private String label;
-    private String screensize;
+    private int screensize;
 
     @OneToMany(mappedBy = "comment_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
     private List<CommentAndRate> commentAndRatesList;

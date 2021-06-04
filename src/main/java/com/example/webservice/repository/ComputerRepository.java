@@ -8,9 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ComputerRepository extends JpaRepository<Computer, Integer> {
-    @Query("SELECT c FROM Computer c")
-    public List<Computer> getComputerDetails();
-
     @Query("SELECT c FROM Computer c WHERE screenresolution LIKE %?1%")
     public List<Computer> getComputersByScreenResolution(String screenresolution);
 

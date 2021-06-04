@@ -23,9 +23,7 @@ public class ComputerService {
         return computerRepository.findById(id).orElse(null);
     }
 
-    public List<Computer> getComputerDetails(){
-        return computerRepository.getComputerDetails();
-    }
+    public List<Computer> getComputerDetails() { return computerRepository.findAll(); }
 
     public List<Computer> getComputerByScreenResolution(String screenresolution) { return computerRepository.getComputersByScreenResolution(screenresolution); }
 
