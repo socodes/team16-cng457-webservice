@@ -1,7 +1,6 @@
 package com.example.webservice.controller;
 
 import com.example.webservice.entity.AdditionalFeatures;
-import com.example.webservice.entity.Phone;
 import com.example.webservice.service.AdditionalFeaturesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

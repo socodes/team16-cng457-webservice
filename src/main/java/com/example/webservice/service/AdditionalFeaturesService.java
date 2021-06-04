@@ -26,7 +26,6 @@ public class AdditionalFeaturesService {
         return AdditionalFeaturesRepository.findById(id).orElse(null);
     }
 
-
     public List<AdditionalFeatures> getAdditionalFeaturesByName(String name) {
         return AdditionalFeaturesRepository.getAdditionalFeaturesByName(name);
     }
