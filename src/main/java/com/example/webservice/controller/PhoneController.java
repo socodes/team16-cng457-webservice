@@ -121,6 +121,42 @@ public class PhoneController {
     public List<Phone> getPhonesByLabelAndModel(@PathVariable String label, @PathVariable String model){
         return phoneService.getPhonesByLabelAndModel(label, model);
     }
+    @GetMapping("/getphonesbyinternalmemoryandlabel/{label}/{internalmemory}") //Muhammed
+    public List<Phone> getPhonesByInternalMemoryAndLabel(@PathVariable String label, @PathVariable String internalmemory){
+        return phoneService.getPhonesByInternalMemoryAndLabel(label, internalmemory);
+    }
+    @GetMapping("/getphonesbyinternalmemoryandscreensize/{screensize}/{internalmemory}") //Muhammed
+    public List<Phone> getPhonesByInternalMemoryAndScreensize(@PathVariable String screensize, @PathVariable String internalmemory){
+        return phoneService.getPhonesByInternalMemoryAndScreensize(screensize, internalmemory);
+    }
+    @GetMapping("/getphonesbyinternalmemoryandmodel/{model}/{internalmemory}") //Muhammed
+    public List<Phone> getPhonesByInternalMemoryAndModel(@PathVariable String model, @PathVariable String internalmemory){
+        return phoneService.getPhonesByInternalMemoryAndModel(model, internalmemory);
+    }
+
+    @GetMapping("/getphonesbyinternalmemoryandadditionalfeature/{additionalfeature}/{internalmemory}") //Muhammed
+    public List<Phone> getPhonesByInternalMemoryAndAdditionalFeature(@PathVariable String additionalfeature, @PathVariable String internalmemory){
+        return phoneService.getPhonesByInternalMemoryAndAdditionalFeature(additionalfeature, internalmemory);
+    }
+
+    @GetMapping("/getphonesbyinternalmemoryandname/{name}/{internalmemory}") //Muhammed
+    public List<Phone> getPhonesByInternalMemoryAndName(@PathVariable String name, @PathVariable String internalmemory){
+        return phoneService.getPhonesByInternalMemoryAndName(name, internalmemory);
+    }
+
+    @GetMapping("/getphonesbyinternalmemoryandrate/{rate}/{internalmemory}") //Muhammed
+    public List<Phone> getPhonesByInternalMemoryAndRate(@PathVariable String rate, @PathVariable String internalmemory){
+        return phoneService.getPhonesByInternalMemoryAndRate(rate, internalmemory);
+    }
+
+    @GetMapping("/getphonesbyinternalmemoryandcomment/{comment}/{internalmemory}") //Muhammed
+    public List<Phone> getPhonesByInternalMemoryAndComment(@PathVariable String comment, @PathVariable String internalmemory){
+        return phoneService.getPhonesByInternalMemoryAndComment(comment, internalmemory);
+    }
+
+
+    //internal memory
+    //comment
     /*
     @GetMapping("/getphonesbybrandandcommentandrate/{name}/{comment}/{additionalfeature}") //EDA
     public List<Phone> getPhonesByBrandAndCommentAndAdditionalFeature(@PathVariable String name, @PathVariable String comment, @PathVariable String additionalfeature){

@@ -81,6 +81,34 @@ public class PhoneService {
         return phoneRepository.getPhonesByLabelAndModel(label, model);
     }
 
+    public List<Phone> getPhonesByInternalMemoryAndLabel(String label, String internalmemory) {
+        return phoneRepository.getPhonesByInternalMemoryAndLabel(label, internalmemory);
+    }
+
+    public List<Phone> getPhonesByInternalMemoryAndScreensize(String screensize, String internalmemory) {
+        return phoneRepository.getPhonesByInternalMemoryAndScreensize(screensize, internalmemory);
+    }
+
+    public List<Phone> getPhonesByInternalMemoryAndModel(String model, String internalmemory) {
+        return phoneRepository.getPhonesByInternalMemoryAndModel(model, internalmemory);
+    }
+
+    public List<Phone> getPhonesByInternalMemoryAndAdditionalFeature(String additionalfeature, String internalmemory) {
+        return phoneRepository.getPhonesByInternalMemoryAndAdditionalFeature(additionalfeature, internalmemory);
+    }
+
+    public List<Phone> getPhonesByInternalMemoryAndName(String name, String internalmemory) {
+        return phoneRepository.getPhonesByInternalMemoryAndName(name, internalmemory);
+    }
+
+    public List<Phone> getPhonesByInternalMemoryAndRate(String rate, String internalmemory) {
+        return phoneRepository.getPhonesByInternalMemoryAndRate(rate, internalmemory);
+    }
+
+    public List<Phone> getPhonesByInternalMemoryAndComment(String comment, String internalmemory) {
+        return phoneRepository.getPhonesByInternalMemoryAndComment(comment, internalmemory);
+    }
+
 
 /*
     public List<Phone> getPhonesByBrandAndCommentAndAdditionalFeature(String name, String comment, String additionalfeature) {
