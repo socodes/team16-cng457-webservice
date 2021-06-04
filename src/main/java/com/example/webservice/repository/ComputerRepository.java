@@ -82,6 +82,21 @@ public interface ComputerRepository extends JpaRepository<Computer, Integer> {
             "WHERE additional_features.afs_name LIKE %?1% AND brand.brand_name LIKE %?2%", nativeQuery = true)
     List<Computer> getComputersByAdditionalFeatureAndBrand(String additionalfeature, String name);
 
+    @Query(value= "SELECT * FROM computer\n" +
+            "INNER JOIN product ON computer.product_id = product.product_id\n" +
+            "WHERE product.price = ?2 AND product.label LIKE %?1%", nativeQuery = true)
+    List<Computer> getComputersByLabelAndPrice(String label, int price);
+
+    @Query(value= "SELECT * FROM computer\n" +
+            "INNER JOIN product ON computer.product_id = product.product_id\n" +
+            "WHERE product.label = ?1 AND product.screensize LIKE %?2%", nativeQuery = true)
+    List<Computer> getComputersByLabelAndScreensize(String label, String screensize);
+
+    @Query(value= "SELECT * FROM computer\n" +
+            "INNER JOIN product ON computer.product_id = product.product_id\n" +
+            "WHERE product.label = ?1 AND product.model LIKE %?2%", nativeQuery = true)
+    List<Computer> getComputersByLabelAndSModel(String label, String model);
+
 
     /*
     @Query("SELECT c FROM Computer c INNER JOIN Brand b ON c.product_id = b.brand_id WHERE b.brand_name LIKE %?1% AND c.product_id = ?2")

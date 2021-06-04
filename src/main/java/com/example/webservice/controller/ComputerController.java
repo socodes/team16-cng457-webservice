@@ -118,4 +118,17 @@ public class ComputerController {
         return computerService.getComputersByAdditionalFeatureAndBrand(additionalfeature, name);
     }
 
+    @GetMapping("/getcomputersbylabelandprice/{label}/{price}") //Muhammed
+    public List<Computer> getPhonesByLabelAndPrice(@PathVariable String label, @PathVariable int price){
+        return computerService.getComputersByLabelAndPrice(label, price);
+    }
+    @GetMapping("/getcomputersbylabelandscreensize/{label}/{screensize}") //Muhammed
+    public List<Computer> getPhonesByLabelAndScreensize(@PathVariable String label, @PathVariable String screensize){
+        return computerService.getComputersByLabelAndScreensize(label, screensize);
+    }
+    @GetMapping("/getcomputersbylabelandmodel/{label}/{model}") //Muhammed
+    public List<Computer> getPhonesByLabelAndModel(@PathVariable String label, @PathVariable String model){
+        return computerService.getComputersByLabelAndModel(label, model);
+    }
+
 }

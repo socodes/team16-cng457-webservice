@@ -108,6 +108,19 @@ public class PhoneController {
     public List<Phone> getPhonesByAdditionalFeatureAndBrand(@PathVariable String additionalfeature, @PathVariable String name){
         return phoneService.getPhonesByAdditionalFeatureAndBrand(additionalfeature, name);
     }
+
+    @GetMapping("/getphonesbylabelandprice/{label}/{price}") //Muhammed
+    public List<Phone> getPhonesByLabelAndPrice(@PathVariable String label, @PathVariable int price){
+        return phoneService.getPhonesByLabelAndPrice(label, price);
+    }
+    @GetMapping("/getphonesbylabelandscreensize/{label}/{screensize}") //Muhammed
+    public List<Phone> getPhonesByLabelAndScreensize(@PathVariable String label, @PathVariable String screensize){
+        return phoneService.getPhonesByLabelAndScreensize(label, screensize);
+    }
+    @GetMapping("/getphonesbylabelandmodel/{label}/{model}") //Muhammed
+    public List<Phone> getPhonesByLabelAndModel(@PathVariable String label, @PathVariable String model){
+        return phoneService.getPhonesByLabelAndModel(label, model);
+    }
     /*
     @GetMapping("/getphonesbybrandandcommentandrate/{name}/{comment}/{additionalfeature}") //EDA
     public List<Phone> getPhonesByBrandAndCommentAndAdditionalFeature(@PathVariable String name, @PathVariable String comment, @PathVariable String additionalfeature){
