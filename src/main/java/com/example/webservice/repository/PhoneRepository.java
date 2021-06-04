@@ -84,6 +84,22 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer> {
             "INNER JOIN brand ON phone.product_id = brand.brand_id\n" +
             "WHERE additional_features.afs_name LIKE %?1% AND brand.brand_name LIKE %?2%", nativeQuery = true)
     List<Phone> getPhonesByAdditionalFeatureAndBrand(String additionalfeature, String name);  //EDA
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "WHERE product.price = ?2 AND product.label LIKE %?1%", nativeQuery = true)
+    List<Phone> getPhonesByLabelAndPrice(String label, int price); //Muhammed
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "WHERE product.label = ?1 AND product.screensize LIKE %?2%", nativeQuery = true)
+    List<Phone> getPhonesByLabelAndScreensize(String label, String screensize);//Muhammed
+
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "WHERE product.label = ?1 AND product.model LIKE %?2%", nativeQuery = true)
+    List<Phone> getPhonesByLabelAndModel(String label, String model);//Muhammed
+
 /*
     @Query(value= "SELECT * FROM phone\n" +
             "INNER JOIN product ON phone.product_id = product.product_id\n" +

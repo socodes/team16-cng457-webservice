@@ -73,6 +73,18 @@ public class ComputerService {
         return  computerRepository.getComputersByAdditionalFeatureAndBrand(additionalfeature, name);
     }
 
+    public List<Computer> getComputersByLabelAndPrice(String label, int price) {
+        return  computerRepository.getComputersByLabelAndPrice(label, price);
+    }
+
+    public List<Computer> getComputersByLabelAndScreensize(String label, String screensize) {
+        return  computerRepository.getComputersByLabelAndScreensize(label, screensize);
+    }
+
+    public List<Computer> getComputersByLabelAndModel(String label, String model) {
+        return  computerRepository.getComputersByLabelAndSModel(label, model);
+    }
+
     /*
     public List<Computer> getComputerFromBrandAndID(String name, int id){
         return computerRepository.getComputersFromBrandAndID(name, id);

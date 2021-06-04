@@ -69,6 +69,19 @@ public class PhoneService {
     public List<Phone> getPhonesByAdditionalFeatureAndBrand(String additionalfeature, String name) {
         return phoneRepository.getPhonesByAdditionalFeatureAndBrand(additionalfeature, name);
     }  //EDA
+
+    public List<Phone> getPhonesByLabelAndPrice(String label, int price) {
+        return phoneRepository.getPhonesByLabelAndPrice(label, price);
+    }
+    public List<Phone> getPhonesByLabelAndScreensize(String label, String screensize) {
+        return phoneRepository.getPhonesByLabelAndScreensize(label, screensize);
+    }
+
+    public List<Phone> getPhonesByLabelAndModel(String label, String model) {
+        return phoneRepository.getPhonesByLabelAndModel(label, model);
+    }
+
+
 /*
     public List<Phone> getPhonesByBrandAndCommentAndAdditionalFeature(String name, String comment, String additionalfeature) {
         return phoneRepository.getPhonesByBrandAndCommentAndAdditionalFeature(name, comment, additionalfeature);
