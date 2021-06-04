@@ -139,6 +139,14 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer> {
             "WHERE phone.internalMemory LIKE %?2% AND comment_and_rate.comment LIKE %?1%", nativeQuery = true)
     List<Phone> getPhonesByInternalMemoryAndComment(String comment, String internalmemory);
 
+    @Query(value= "SELECT * FROM phone\n" +
+            "INNER JOIN product ON phone.product_id = product.product_id\n" +
+            "INNER JOIN additional_features ON phone.product_id = additional_features.afs_id\n" +
+            "WHERE additional_features.afs_name LIKE %?1% AND product.model LIKE %?12", nativeQuery = true)
+    List<Phone> getPhonesByAdditionalFeatureAndModel(String additionalfeature, String model);
+
+
+
 /*
     @Query(value= "SELECT * FROM phone\n" +
             "INNER JOIN product ON phone.product_id = product.product_id\n" +
