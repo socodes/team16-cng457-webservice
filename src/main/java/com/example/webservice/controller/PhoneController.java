@@ -154,6 +154,10 @@ public class PhoneController {
         return phoneService.getPhonesByInternalMemoryAndComment(comment, internalmemory);
     }
 
+    @GetMapping("/getphonesbyadditionalfeatureandmodel/{additionalfeature}/{model}") //Muhammed
+    public List<Phone> getPhonesByAdditionalFeatureAndModel(@PathVariable String additionalfeature, @PathVariable String model){
+        return phoneService.getPhonesByAdditionalFeatureAndModel(additionalfeature, model);
+    }
 
     //internal memory
     //comment

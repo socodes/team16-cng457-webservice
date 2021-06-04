@@ -109,6 +109,10 @@ public class PhoneService {
         return phoneRepository.getPhonesByInternalMemoryAndComment(comment, internalmemory);
     }
 
+    public List<Phone> getPhonesByAdditionalFeatureAndModel(String additionalfeature, String model) {
+        return phoneRepository.getPhonesByAdditionalFeatureAndModel(additionalfeature, model);
+    }
+
 
 /*
     public List<Phone> getPhonesByBrandAndCommentAndAdditionalFeature(String name, String comment, String additionalfeature) {
