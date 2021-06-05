@@ -174,70 +174,7 @@ public class PhoneController {
                 }
             }
         }
-
-
-        if (afs_name != null) {
-            for (int i = 0; i < phoneList.size(); i++) {
-                Phone currentPhone = phoneList.get(i);
-                if (!currentPhone.getAdditionalFeaturesList().get(i).getAfs_name().equals(afs_name)) {
-                    phoneList.remove(i);
-                    i--;
-                }
-            }
-        }
-
-        if (comment != null) {
-            for (int i = 0; i < phoneList.size(); i++) {
-                Phone currentPhone = phoneList.get(i);
-                if (!currentPhone.getCommentAndRatesList().get(i).getComment().equals(comment)) {
-                    phoneList.remove(i);
-                    i--;
-                }
-            }
-        }
-
-        if (rate != null) {
-            for (int i = 0; i < phoneList.size(); i++) {
-                Phone currentPhone = phoneList.get(i);
-                if (currentPhone.getCommentAndRatesList().get(i).getRate() != rate) {
-                    phoneList.remove(i);
-                    i--;
-                }
-            }
-        }
-
-
-        if (brand_name != null) {
-            for (int i = 0; i < phoneList.size(); i++) {
-                Phone currentPhone = phoneList.get(i);
-                if (!currentPhone.getBrandList().get(i).getBrand_name().equals(brand_name)) {
-                    phoneList.remove(i);
-                    i--;
-                }
-            }
-        }
-
-        if(internalMemory1 != null && internalMemory2 != null)
-        {
-            for(int i = 0; i < phoneList.size(); i++) {
-                Phone currentPhone = phoneList.get(i);
-                if(!currentPhone.getInternalMemory().equals(internalMemory1) && !currentPhone.getInternalMemory().equals(internalMemory2)) {
-                    phoneList.remove(i);
-                    i--;
-                }
-            }
-        }
         
-        if (model1 != null && model2 != null) {
-            for (int i = 0; i < phoneList.size(); i++) {
-                Phone currentPhone = phoneList.get(i);
-                if (!currentPhone.getModel().equals(model1) && !currentPhone.getModel().equals(model2)) {
-                    phoneList.remove(i);
-                    i--;
-                }
-            }
-        }
-
         return phoneList;
     }
 
