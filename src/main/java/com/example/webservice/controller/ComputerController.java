@@ -1,6 +1,7 @@
 package com.example.webservice.controller;
 
 import com.example.webservice.entity.Computer;
+import com.example.webservice.entity.Phone;
 import com.example.webservice.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -121,7 +122,7 @@ public class ComputerController {
         if(model != null){
             for(int i = 0; i < computerList.size(); i++){
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getModel() != model) {
+                if (!currentComputer.getModel().equals(model)) {
                     computerList.remove(i);
                     i--;
                 }
@@ -152,7 +153,7 @@ public class ComputerController {
         if (label != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getLabel() != label) {
+                if (!currentComputer.getLabel().equals(label)) {
                     computerList.remove(i);
                     i--;
                 }
@@ -172,7 +173,7 @@ public class ComputerController {
         if (screen_resolution != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getScreenResolution() != screen_resolution) {
+                if (!currentComputer.getScreenResolution().equals(screen_resolution)) {
                     computerList.remove(i);
                     i--;
                 }
@@ -182,7 +183,7 @@ public class ComputerController {
         if (storage_capacity != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getStorageCapacity() != storage_capacity) {
+                if (!currentComputer.getStorageCapacity().equals(storage_capacity)) {
                     computerList.remove(i);
                     i--;
                 }
@@ -192,7 +193,7 @@ public class ComputerController {
         if (memory != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getMemory() != memory) {
+                if (!currentComputer.getMemory().equals(memory)) {
                     computerList.remove(i);
                     i--;
                 }
@@ -202,7 +203,7 @@ public class ComputerController {
         if (processor != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getProcessor() != processor) {
+                if (!currentComputer.getProcessor().equals(processor)) {
                     computerList.remove(i);
                     i--;
                 }
@@ -212,7 +213,7 @@ public class ComputerController {
         if (minprice != null && maxprice != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (maxprice < currentComputer.getPrice() && currentComputer.getPrice() < minprice) {
+                if ((maxprice < currentComputer.getPrice()) || (currentComputer.getPrice() < minprice)) {
                     computerList.remove(i);
                     i--;
                 }
@@ -222,7 +223,7 @@ public class ComputerController {
         if (minscreensize != null && maxscreensize != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (maxscreensize < currentComputer.getScreensize() && currentComputer.getScreensize() < minscreensize) {
+                if ((maxscreensize < currentComputer.getScreensize()) || (currentComputer.getScreensize() < minscreensize)) {
                     computerList.remove(i);
                     i--;
                 }
@@ -232,7 +233,13 @@ public class ComputerController {
         if (afs_name != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getAdditionalFeaturesList().get(i).getAfs_name() != afs_name) {
+                for(int j = 0; j < currentComputer.getAdditionalFeaturesList().size(); j++){
+                    if(!currentComputer.getAdditionalFeaturesList().get(j).getAfs_name().equals(afs_name)){
+                        currentComputer.getAdditionalFeaturesList().remove(j);
+                        j--;
+                    }
+                }
+                if (currentComputer.getAdditionalFeaturesList().size() == 0) {
                     computerList.remove(i);
                     i--;
                 }
@@ -242,17 +249,13 @@ public class ComputerController {
         if (comment != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getCommentAndRatesList().get(i).getComment() != comment) {
-                    computerList.remove(i);
-                    i--;
+                for(int j = 0; j < currentComputer.getCommentAndRatesList().size(); j++){
+                    if(!currentComputer.getCommentAndRatesList().get(j).getComment().equals(comment)){
+                        currentComputer.getCommentAndRatesList().remove(j);
+                        j--;
+                    }
                 }
-            }
-        }
-
-        if (rate != null) {
-            for (int i = 0; i < computerList.size(); i++) {
-                Computer currentComputer = computerList.get(i);
-                if (currentComputer.getCommentAndRatesList().get(i).getRate() != rate) {
+                if (currentComputer.getCommentAndRatesList().size() == 0) {
                     computerList.remove(i);
                     i--;
                 }
@@ -262,7 +265,13 @@ public class ComputerController {
         if (brand_name != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (currentComputer.getBrandList().get(i).getBrand_name() != brand_name) {
+                for(int j = 0; j < currentComputer.getBrandList().size(); j++){
+                    if(!currentComputer.getBrandList().get(j).getBrand_name().equals(brand_name)){
+                        currentComputer.getBrandList().remove(j);
+                        j--;
+                    }
+                }
+                if (currentComputer.getBrandList().size() == 0) {
                     computerList.remove(i);
                     i--;
                 }

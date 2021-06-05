@@ -125,10 +125,11 @@ public class PhoneController {
             }
         }
 
+
         if (minprice != null && maxprice != null) {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (maxprice < currentPhone.getPrice() && currentPhone.getPrice() < minprice) {
+                if ((maxprice < currentPhone.getPrice()) || (currentPhone.getPrice() < minprice)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -148,7 +149,7 @@ public class PhoneController {
         if (minscreensize != null && maxscreensize != null) {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (maxscreensize < currentPhone.getScreensize() && currentPhone.getScreensize() < minscreensize) {
+                if ((maxscreensize < currentPhone.getScreensize()) || (currentPhone.getScreensize() < minscreensize)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -169,6 +170,72 @@ public class PhoneController {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 if (!currentPhone.getLabel().equals(label)) {
+                    phoneList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+
+        if (afs_name != null) {
+            for (int i = 0; i < phoneList.size(); i++) {
+                Phone currentPhone = phoneList.get(i);
+                for(int j = 0; j < currentPhone.getAdditionalFeaturesList().size(); j++){
+                    if(!currentPhone.getAdditionalFeaturesList().get(j).getAfs_name().equals(afs_name)){
+                        currentPhone.getAdditionalFeaturesList().remove(j);
+                        j--;
+                    }
+                }
+                if (currentPhone.getAdditionalFeaturesList().size() == 0) {
+                    phoneList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (comment != null) {
+            for (int i = 0; i < phoneList.size(); i++) {
+                Phone currentPhone = phoneList.get(i);
+                for(int j = 0; j < currentPhone.getCommentAndRatesList().size(); j++){
+                    if(!currentPhone.getCommentAndRatesList().get(j).getComment().equals(comment)){
+                        currentPhone.getCommentAndRatesList().remove(j);
+                        j--;
+                    }
+                }
+                if (currentPhone.getCommentAndRatesList().size() == 0) {
+                    phoneList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (rate != null) {
+            for (int i = 0; i < phoneList.size(); i++) {
+                Phone currentPhone = phoneList.get(i);
+                for(int j = 0; j < currentPhone.getCommentAndRatesList().size(); j++){
+                    if (currentPhone.getCommentAndRatesList().get(j).getRate() != rate) {
+                        currentPhone.getCommentAndRatesList().remove(j);
+                        j--;
+                    }
+                }
+                if(currentPhone.getCommentAndRatesList().size() == 0){
+                    phoneList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+
+        if (brand_name != null) {
+            for (int i = 0; i < phoneList.size(); i++) {
+                Phone currentPhone = phoneList.get(i);
+                for(int j = 0; j < currentPhone.getBrandList().size(); j++){
+                    if(!currentPhone.getBrandList().get(j).getBrand_name().equals(brand_name)){
+                        currentPhone.getBrandList().remove(j);
+                        j--;
+                    }
+                }
+                if (currentPhone.getBrandList().size() == 0) {
                     phoneList.remove(i);
                     i--;
                 }
