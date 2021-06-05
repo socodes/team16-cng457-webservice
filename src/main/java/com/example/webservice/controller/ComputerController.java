@@ -26,14 +26,14 @@ public class ComputerController {
         return computerService.getComputer(id);
     }
 
-    @GetMapping("/getcomputersbyscreenresolution/{screenresolution}")
-    public List<Computer> getComputerByScreenResolution(@PathVariable String screenresolution){
-        return computerService.getComputerByScreenResolution(screenresolution);
+    @GetMapping("/getcomputersbyscreenresolution/{screenResolution}")
+    public List<Computer> getComputerByScreenResolution(@PathVariable String screenResolution){
+        return computerService.getComputerByScreenResolution(screenResolution);
     }
 
-    @GetMapping("/getcomputersbystoragecapacity/{storagecapacity}")
-    public List<Computer> getComputerByStorageCapacity(@PathVariable String storagecapacity){
-        return computerService.getComputerByStorageCapacity(storagecapacity);
+    @GetMapping("/getcomputersbystoragecapacity/{storageCapacity}")
+    public List<Computer> getComputerByStorageCapacity(@PathVariable String storageCapacity){
+        return computerService.getComputerByStorageCapacity(storageCapacity);
     }
 
     @GetMapping("/getcomputersbymemory/{memory}")
@@ -56,6 +56,7 @@ public class ComputerController {
         return computerService.getComputerByPrice(price);
     }
 
+    // Redundant, but keep it for GUI, it might be useful
     @GetMapping("/getcomputersbylabel/{label}")
     public List<Computer> getComputerByLabel(@PathVariable String label){
         return computerService.getComputerByLabel(label);
@@ -66,9 +67,9 @@ public class ComputerController {
         return computerService.getComputerByScreensize(screensize);
     }
 
-    @GetMapping("/getcomputersbybrand/{brand}")
-    public List<Computer> getComputersByBrand(@PathVariable String name){
-        return computerService.getComputersByBrand(name);
+    @GetMapping("/getcomputersbybrand/{brand_name}")
+    public List<Computer> getComputersByBrand(@PathVariable String brand_name){
+        return computerService.getComputersByBrand(brand_name);
     }
 
     @GetMapping("/getcomputersbycomment/{comment}")

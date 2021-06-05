@@ -28,7 +28,7 @@ public class PhoneController {
         return phoneService.getPhoneDetails();
     }
 
-    @GetMapping("/getphonesbyinternalmemory/{internalmemory}")
+    @GetMapping("/getphonesbyinternalmemory/{internalMemory}")
     public List<Phone> getPhonesByInternalMemory(@PathVariable String internalMemory) {
         return phoneService.getPhonesByInternalMemory(internalMemory);
     }
@@ -43,6 +43,7 @@ public class PhoneController {
         return phoneService.getPhonesByPrice(price);
     }
 
+    // Redundant, but keep it for GUI, it might be useful
     @GetMapping("/getphonesbylabel/{label}")
     public List<Phone> getPhonesByLabel(@PathVariable String label) {
         return phoneService.getPhonesByLabel(label);

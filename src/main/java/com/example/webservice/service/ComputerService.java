@@ -25,9 +25,9 @@ public class ComputerService {
 
     public List<Computer> getComputerDetails() { return computerRepository.findAll(); }
 
-    public List<Computer> getComputerByScreenResolution(String screenresolution) { return computerRepository.getComputersByScreenResolution(screenresolution); }
+    public List<Computer> getComputerByScreenResolution(String screenResolution) { return computerRepository.getComputersByScreenResolution(screenResolution); }
 
-    public List<Computer> getComputerByStorageCapacity(String storagecapacity) { return computerRepository.getComputersByStorageCapacity(storagecapacity); }
+    public List<Computer> getComputerByStorageCapacity(String storageCapacity) { return computerRepository.getComputersByStorageCapacity(storageCapacity); }
 
     public List<Computer> getComputerByMemory(String memory) {
         return computerRepository.getComputersByMemory(memory);
@@ -43,7 +43,7 @@ public class ComputerService {
 
     public List<Computer> getComputerByScreensize(int screensize) { return computerRepository.getComputerByScreensize(screensize); }
 
-    public List<Computer> getComputersByBrand(String name) { return computerRepository.getComputersByBrand(name); }
+    public List<Computer> getComputersByBrand(String brand_name) { return computerRepository.getComputersByBrand(brand_name); }
 
     public List<Computer> getComputersByComment(String comment) { return computerRepository.getComputersByComment(comment); }
 
