@@ -13,6 +13,8 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    // These are redundant for testing since we only want Phone or Computer but we kept them just in case.
+
     @PostMapping("/addproduct")
     public Product saveProduct(@RequestBody Product p){
         return productService.saveProduct(p);
