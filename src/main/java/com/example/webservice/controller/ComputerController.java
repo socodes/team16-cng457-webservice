@@ -89,6 +89,8 @@ public class ComputerController {
     @GetMapping("/getcomputersbysearch")
     public List<Computer> getPhonesBySearch(@RequestParam(required = false) Integer product_id,
                                             @RequestParam(required = false) String model,
+                                            @RequestParam(required = false) String model1,
+                                            @RequestParam(required = false) String model2,
                                             @RequestParam(required = false) Integer price,
                                             @RequestParam(required = false) String label,
                                             @RequestParam(required = false) Integer screensize,
@@ -126,6 +128,16 @@ public class ComputerController {
                 }
             }
 
+        }
+
+        if (model1 != null && model2 != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (!currentComputer.getModel().equals(model1) && !currentComputer.getModel().equals(model2)) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
         }
 
         if (price != null) {
@@ -260,6 +272,22 @@ public class ComputerController {
                     }
                 }
                 if (currentComputer.getBrandList().size() == 0) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (rate != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                for(int j = 0; j < currentComputer.getCommentAndRatesList().size(); j++){
+                    if (currentComputer.getCommentAndRatesList().get(j).getRate() != rate) {
+                        currentComputer.getCommentAndRatesList().remove(j);
+                        j--;
+                    }
+                }
+                if(currentComputer.getCommentAndRatesList().size() == 0){
                     computerList.remove(i);
                     i--;
                 }

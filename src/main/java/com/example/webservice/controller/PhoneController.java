@@ -76,10 +76,14 @@ public class PhoneController {
     @GetMapping("/getphonesbysearch")
     public List<Phone> getPhonesBySearch(@RequestParam(required = false) Integer product_id,
                                   @RequestParam(required = false) String model,
+                                  @RequestParam(required = false) String model1,
+                                  @RequestParam(required = false) String model2,
                                   @RequestParam(required = false) Integer price,
                                   @RequestParam(required = false) String label,
                                   @RequestParam(required = false) Integer screensize,
                                   @RequestParam(required = false) String internalMemory,
+                                  @RequestParam(required = false) String internalMemory1,
+                                  @RequestParam(required = false) String internalMemory2,
                                   @RequestParam(required = false) Integer minprice,
                                   @RequestParam(required = false) Integer maxprice,
                                   @RequestParam(required = false) Integer minscreensize,
@@ -237,7 +241,7 @@ public class PhoneController {
                 }
             }
         }
-
+        
         return phoneList;
     }
 
