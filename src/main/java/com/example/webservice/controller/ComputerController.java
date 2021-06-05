@@ -259,6 +259,16 @@ public class ComputerController {
             }
         }
 
+        if (brand_name != null) {
+            for (int i = 0; i < computerList.size(); i++) {
+                Computer currentComputer = computerList.get(i);
+                if (currentComputer.getBrandList().get(i).getBrand_name() != brand_name) {
+                    computerList.remove(i);
+                    i--;
+                }
+            }
+        }
+
         if (rate != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
@@ -269,16 +279,6 @@ public class ComputerController {
                     }
                 }
                 if(currentComputer.getCommentAndRatesList().size() == 0){
-                    computerList.remove(i);
-                    i--;
-                }
-            }
-        }
-
-        if (brand_name != null) {
-            for (int i = 0; i < computerList.size(); i++) {
-                Computer currentComputer = computerList.get(i);
-                if (currentComputer.getBrandList().get(i).getBrand_name() != brand_name) {
                     computerList.remove(i);
                     i--;
                 }

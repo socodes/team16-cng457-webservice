@@ -115,17 +115,6 @@ public class PhoneController {
             }
         }
 
-        if(internalMemory1 != null && internalMemory2 != null)
-        {
-            for(int i = 0; i < phoneList.size(); i++) {
-                Phone currentPhone = phoneList.get(i);
-                if(!currentPhone.getInternalMemory().equals(internalMemory1) && !currentPhone.getInternalMemory().equals(internalMemory2)) {
-                    phoneList.remove(i);
-                    i--;
-                }
-            }
-        }
-
         if (price != null) {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
@@ -170,16 +159,6 @@ public class PhoneController {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 if (!currentPhone.getModel().equals(model)) {
-                    phoneList.remove(i);
-                    i--;
-                }
-            }
-        }
-
-        if (model1 != null && model2 != null) {
-            for (int i = 0; i < phoneList.size(); i++) {
-                Phone currentPhone = phoneList.get(i);
-                if (!currentPhone.getModel().equals(model1) && !currentPhone.getModel().equals(model2)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -232,6 +211,27 @@ public class PhoneController {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 if (!currentPhone.getBrandList().get(i).getBrand_name().equals(brand_name)) {
+                    phoneList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if(internalMemory1 != null && internalMemory2 != null)
+        {
+            for(int i = 0; i < phoneList.size(); i++) {
+                Phone currentPhone = phoneList.get(i);
+                if(!currentPhone.getInternalMemory().equals(internalMemory1) && !currentPhone.getInternalMemory().equals(internalMemory2)) {
+                    phoneList.remove(i);
+                    i--;
+                }
+            }
+        }
+        
+        if (model1 != null && model2 != null) {
+            for (int i = 0; i < phoneList.size(); i++) {
+                Phone currentPhone = phoneList.get(i);
+                if (!currentPhone.getModel().equals(model1) && !currentPhone.getModel().equals(model2)) {
                     phoneList.remove(i);
                     i--;
                 }
