@@ -76,10 +76,14 @@ public class PhoneController {
     @GetMapping("/getphonesbysearch")
     public List<Phone> getPhonesBySearch(@RequestParam(required = false) Integer product_id,
                                   @RequestParam(required = false) String model,
+                                  @RequestParam(required = false) String model1,
+                                  @RequestParam(required = false) String model2,
                                   @RequestParam(required = false) Integer price,
                                   @RequestParam(required = false) String label,
                                   @RequestParam(required = false) Integer screensize,
                                   @RequestParam(required = false) String internalMemory,
+                                  @RequestParam(required = false) String internalMemory1,
+                                  @RequestParam(required = false) String internalMemory2,
                                   @RequestParam(required = false) Integer minprice,
                                   @RequestParam(required = false) Integer maxprice,
                                   @RequestParam(required = false) Integer minscreensize,
@@ -105,6 +109,17 @@ public class PhoneController {
             for (i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 if (currentPhone.getInternalMemory() != internalMemory) {
+                    phoneList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if(internalMemory1 != null && internalMemory2 != null)
+        {
+            for(int i = 0; i < phoneList.size(); i++) {
+                Phone currentPhone = phoneList.get(i);
+                if(!currentPhone.getInternalMemory().equals(internalMemory1) && !currentPhone.getInternalMemory().equals(internalMemory2)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -155,6 +170,16 @@ public class PhoneController {
             for (i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 if (currentPhone.getModel() != model) {
+                    phoneList.remove(i);
+                    i--;
+                }
+            }
+        }
+
+        if (model1 != null && model2 != null) {
+            for (int i = 0; i < phoneList.size(); i++) {
+                Phone currentPhone = phoneList.get(i);
+                if (!currentPhone.getModel().equals(model1) && !currentPhone.getModel().equals(model2)) {
                     phoneList.remove(i);
                     i--;
                 }
