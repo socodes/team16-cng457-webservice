@@ -90,9 +90,9 @@ public class PhoneController {
                                   @RequestParam(required = false) String brand_name) {
 
         List<Phone> phoneList = phoneService.getPhoneDetails();
-        int i = 0;
+
         if (product_id != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 if (currentPhone.getProduct_id() != product_id) {
                     phoneList.remove(i);
@@ -102,9 +102,9 @@ public class PhoneController {
         }
 
         if (internalMemory != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (currentPhone.getInternalMemory() != internalMemory) {
+                if (!currentPhone.getInternalMemory().equals(internalMemory)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -112,7 +112,7 @@ public class PhoneController {
         }
 
         if (price != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 if (currentPhone.getPrice() != price) {
                     phoneList.remove(i);
@@ -121,10 +121,11 @@ public class PhoneController {
             }
         }
 
+
         if (minprice != null && maxprice != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (maxprice < currentPhone.getPrice() && currentPhone.getPrice() < minprice) {
+                if ((maxprice < currentPhone.getPrice()) || (currentPhone.getPrice() < minprice)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -132,7 +133,7 @@ public class PhoneController {
         }
 
         if (screensize != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 if (currentPhone.getScreensize() != screensize) {
                     phoneList.remove(i);
@@ -142,9 +143,9 @@ public class PhoneController {
         }
 
         if (minscreensize != null && maxscreensize != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (maxscreensize < currentPhone.getScreensize() && currentPhone.getScreensize() < minscreensize) {
+                if ((maxscreensize < currentPhone.getScreensize()) || (currentPhone.getScreensize() < minscreensize)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -152,9 +153,9 @@ public class PhoneController {
         }
 
         if (model != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (currentPhone.getModel() != model) {
+                if (!currentPhone.getModel().equals(model)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -162,9 +163,9 @@ public class PhoneController {
         }
 
         if (label != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (currentPhone.getLabel() != label) {
+                if (!currentPhone.getLabel().equals(label)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -173,9 +174,15 @@ public class PhoneController {
 
 
         if (afs_name != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (currentPhone.getAdditionalFeaturesList().get(i).getAfs_name() != afs_name) {
+                for(int j = 0; j < currentPhone.getAdditionalFeaturesList().size(); j++){
+                    if(!currentPhone.getAdditionalFeaturesList().get(j).getAfs_name().equals(afs_name)){
+                        currentPhone.getAdditionalFeaturesList().remove(j);
+                        j--;
+                    }
+                }
+                if (currentPhone.getAdditionalFeaturesList().size() == 0) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -183,9 +190,15 @@ public class PhoneController {
         }
 
         if (comment != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (currentPhone.getCommentAndRatesList().get(i).getComment() != comment) {
+                for(int j = 0; j < currentPhone.getCommentAndRatesList().size(); j++){
+                    if(!currentPhone.getCommentAndRatesList().get(j).getComment().equals(comment)){
+                        currentPhone.getCommentAndRatesList().remove(j);
+                        j--;
+                    }
+                }
+                if (currentPhone.getCommentAndRatesList().size() == 0) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -193,9 +206,15 @@ public class PhoneController {
         }
 
         if (rate != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (currentPhone.getCommentAndRatesList().get(i).getRate() != rate) {
+                for(int j = 0; j < currentPhone.getCommentAndRatesList().size(); j++){
+                    if (currentPhone.getCommentAndRatesList().get(j).getRate() != rate) {
+                        currentPhone.getCommentAndRatesList().remove(j);
+                        j--;
+                    }
+                }
+                if(currentPhone.getCommentAndRatesList().size() == 0){
                     phoneList.remove(i);
                     i--;
                 }
@@ -204,9 +223,15 @@ public class PhoneController {
 
 
         if (brand_name != null) {
-            for (i = 0; i < phoneList.size(); i++) {
+            for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (currentPhone.getBrandList().get(i).getBrand_name() != brand_name) {
+                for(int j = 0; j < currentPhone.getBrandList().size(); j++){
+                    if(!currentPhone.getBrandList().get(j).getBrand_name().equals(brand_name)){
+                        currentPhone.getBrandList().remove(j);
+                        j--;
+                    }
+                }
+                if (currentPhone.getBrandList().size() == 0) {
                     phoneList.remove(i);
                     i--;
                 }
