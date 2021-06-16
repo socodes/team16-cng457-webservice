@@ -22,11 +22,11 @@ public class Product {
     private String label;
     private int screensize;
 
-    @OneToMany(mappedBy = "comment_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
     private List<CommentAndRate> commentAndRatesList;
 
     @ManyToMany() // owning
-    @JoinTable(name = "product_has_afs", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "productList"))
+    @JoinTable(name = "product_has_afs", joinColumns = @JoinColumn(name = "afs_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<AdditionalFeatures> additionalFeaturesList;
 
     @OneToMany(mappedBy = "brand_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

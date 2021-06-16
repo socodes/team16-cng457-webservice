@@ -1,6 +1,7 @@
 package com.example.webservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import javax.persistence.*;
@@ -19,5 +20,6 @@ public class AdditionalFeatures {
     private int afs_id;
 
     @ManyToMany(mappedBy = "additionalFeaturesList", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
+    @JsonIgnore
     private List<Product> productList;
 }

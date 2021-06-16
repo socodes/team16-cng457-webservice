@@ -1,7 +1,9 @@
 package com.example.webservice.controller;
 
+import com.example.webservice.entity.AdditionalFeatures;
 import com.example.webservice.entity.Computer;
 import com.example.webservice.entity.Phone;
+import com.example.webservice.service.AdditionalFeaturesService;
 import com.example.webservice.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,8 @@ import java.util.List;
 public class ComputerController {
     @Autowired
     ComputerService computerService;
+    @Autowired
+    AdditionalFeaturesService additionalFeaturesService;
 
     @PostMapping("/addcomputer")
     public Computer saveComputer(@RequestBody Computer c){ return computerService.saveComputer(c); }
@@ -85,6 +89,14 @@ public class ComputerController {
     @GetMapping("/getcomputersbyadditionalfeature/{additionalfeature}")
     public List<Computer> getComputersByAdditionalFeature(@PathVariable String additionalfeature){
         return computerService.getComputersByAdditionalFeature(additionalfeature);
+    }
+
+    @GetMapping("/updateComputer/addAdditionalFeatures/{computerID}/{afId}")
+    public Computer updateComputer(@PathVariable int computerID, @PathVariable int afId){
+        Computer tempComputer = computerService.getComputer(computerID);
+        AdditionalFeatures additionalFeatures = additionalFeaturesService.getAdditionalFeatures(afId);
+        tempComputer.getAdditionalFeaturesList().add(additionalFeatures);
+        return computerService.saveComputer(tempComputer);
     }
 
     @GetMapping("/getcomputersbysearch")
