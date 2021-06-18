@@ -196,7 +196,7 @@ public class PhoneController {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 for(int j = 0; j < currentPhone.getAdditionalFeaturesList().size(); j++){
-                    if(!currentPhone.getAdditionalFeaturesList().get(j).getAfs_name().equals(afs_name)){
+                    if(!currentPhone.getAdditionalFeaturesList().get(j).getAfs_name().contains(afs_name)){
                         currentPhone.getAdditionalFeaturesList().remove(j);
                         j--;
                     }

@@ -247,7 +247,7 @@ public class ComputerController {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
                 for(int j = 0; j < currentComputer.getAdditionalFeaturesList().size(); j++){
-                    if(!currentComputer.getAdditionalFeaturesList().get(j).getAfs_name().equals(afs_name)){
+                    if(!currentComputer.getAdditionalFeaturesList().get(j).getAfs_name().contains(afs_name)){
                         currentComputer.getAdditionalFeaturesList().remove(j);
                         j--;
                     }
