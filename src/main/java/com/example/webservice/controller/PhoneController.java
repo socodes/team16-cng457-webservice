@@ -212,7 +212,7 @@ public class PhoneController {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
                 for(int j = 0; j < currentPhone.getCommentAndRatesList().size(); j++){
-                    if(!currentPhone.getCommentAndRatesList().get(j).getComment().equals(comment)){
+                    if(!currentPhone.getCommentAndRatesList().get(j).getComment().contains(comment)){
                         currentPhone.getCommentAndRatesList().remove(j);
                         j--;
                     }

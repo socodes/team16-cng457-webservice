@@ -263,7 +263,7 @@ public class ComputerController {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
                 for(int j = 0; j < currentComputer.getCommentAndRatesList().size(); j++){
-                    if(!currentComputer.getCommentAndRatesList().get(j).getComment().equals(comment)){
+                    if(!currentComputer.getCommentAndRatesList().get(j).getComment().contains(comment)){
                         currentComputer.getCommentAndRatesList().remove(j);
                         j--;
                     }
