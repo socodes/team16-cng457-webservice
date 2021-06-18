@@ -12,10 +12,7 @@ public class PhoneService {
     @Autowired
     PhoneRepository phoneRepository;
 
-    public Phone savePhone(Phone p)
-    {
-        return phoneRepository.save(p);
-    }
+    public Phone savePhone(Phone p){ return phoneRepository.save(p); }
 
     public Phone getPhone(int id) { return phoneRepository.findById(id).orElse(null); }
 

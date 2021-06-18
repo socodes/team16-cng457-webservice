@@ -1,7 +1,10 @@
 package com.example.webservice.controller;
 
+import com.example.webservice.entity.AdditionalFeatures;
+import com.example.webservice.entity.Computer;
 import com.example.webservice.entity.Phone;
 import com.example.webservice.entity.Product;
+import com.example.webservice.service.AdditionalFeaturesService;
 import com.example.webservice.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +15,8 @@ import java.util.List;
 public class PhoneController {
     @Autowired
     PhoneService phoneService;
+    @Autowired
+    AdditionalFeaturesService additionalFeaturesService;
 
     @PostMapping("/addphone")
     public Product savePhone(@RequestBody Phone p) {
@@ -73,6 +78,15 @@ public class PhoneController {
     public List<Phone> getPhonesByAdditionalFeature(@PathVariable String additionalfeature) {
         return phoneService.getPhonesByAdditionalFeature(additionalfeature);
     }
+
+    @GetMapping("/updatePhone/addAdditionalFeatures/{phoneID}/{afId}")
+    public Phone updatePhone(@PathVariable int phoneID, @PathVariable int afId){
+        Phone tempPhone = phoneService.getPhone(phoneID);
+        AdditionalFeatures additionalFeatures = additionalFeaturesService.getAdditionalFeatures(afId);
+        tempPhone.getAdditionalFeaturesList().add(additionalFeatures);
+        return phoneService.savePhone(tempPhone);
+    }
+
 
     @GetMapping("/getphonesbysearch")
     public List<Phone> getPhonesBySearch(@RequestParam(required = false) Integer product_id,

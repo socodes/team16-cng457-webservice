@@ -13,10 +13,7 @@ public class ComputerService {
     @Autowired
     ComputerRepository computerRepository;
 
-    public Computer saveComputer(Computer c)
-    {
-        return computerRepository.save(c);
-    }
+    public Computer saveComputer(Computer c){ return computerRepository.save(c); }
 
     public Computer getComputer(int id)
     {
