@@ -87,6 +87,12 @@ public class PhoneController {
         return phoneService.savePhone(tempPhone);
     }
 
+    @GetMapping("/updatePhone/label/{phoneID}/{label}")
+    public Phone updatePhoneLabel(@PathVariable int phoneID, @PathVariable String label){
+        Phone tempPhone = phoneService.getPhone(phoneID);
+        tempPhone.setLabel(label);
+        return phoneService.savePhone(tempPhone);
+    }
 
     @GetMapping("/getphonesbysearch")
     public List<Phone> getPhonesBySearch(@RequestParam(required = false) Integer product_id,
@@ -123,7 +129,7 @@ public class PhoneController {
         if (internalMemory != null) {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (!currentPhone.getInternalMemory().equals(internalMemory)) {
+                if (!currentPhone.getInternalMemory().contains(internalMemory)) {
                     phoneList.remove(i);
                     i--;
                 }
@@ -190,7 +196,6 @@ public class PhoneController {
                 }
             }
         }
-
 
         if (afs_name != null) {
             for (int i = 0; i < phoneList.size(); i++) {

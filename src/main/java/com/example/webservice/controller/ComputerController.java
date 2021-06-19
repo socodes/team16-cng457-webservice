@@ -2,7 +2,6 @@ package com.example.webservice.controller;
 
 import com.example.webservice.entity.AdditionalFeatures;
 import com.example.webservice.entity.Computer;
-import com.example.webservice.entity.Phone;
 import com.example.webservice.service.AdditionalFeaturesService;
 import com.example.webservice.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +95,13 @@ public class ComputerController {
         Computer tempComputer = computerService.getComputer(computerID);
         AdditionalFeatures additionalFeatures = additionalFeaturesService.getAdditionalFeatures(afId);
         tempComputer.getAdditionalFeaturesList().add(additionalFeatures);
+        return computerService.saveComputer(tempComputer);
+    }
+
+    @GetMapping("/updateComputer/label/{computerID}/{label}")
+    public Computer updateComputerLabel(@PathVariable int computerID, @PathVariable String label){
+        Computer tempComputer = computerService.getComputer(computerID);
+        tempComputer.setLabel(label);
         return computerService.saveComputer(tempComputer);
     }
 
