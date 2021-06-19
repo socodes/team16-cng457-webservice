@@ -166,7 +166,7 @@ public class ComputerController {
         if (label != null) {
             for (int i = 0; i < computerList.size(); i++) {
                 Computer currentComputer = computerList.get(i);
-                if (!currentComputer.getLabel().equals(label)) {
+                if (!currentComputer.getLabel().contains(label)) {
                     computerList.remove(i);
                     i--;
                 }

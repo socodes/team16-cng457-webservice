@@ -184,7 +184,7 @@ public class PhoneController {
         if (label != null) {
             for (int i = 0; i < phoneList.size(); i++) {
                 Phone currentPhone = phoneList.get(i);
-                if (!currentPhone.getLabel().equals(label)) {
+                if (!currentPhone.getLabel().contains(label)) {
                     phoneList.remove(i);
                     i--;
                 }
