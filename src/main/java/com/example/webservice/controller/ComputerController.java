@@ -19,6 +19,13 @@ public class ComputerController {
     AdditionalFeaturesService additionalFeaturesService;
 
     Lock lock = new ReentrantLock();
+
+    /**
+     * This query saves all attributes of the computer to database
+     * @param c name of the entity
+     * @return save the computer list to service
+     * @throws InterruptedException for interrupting potentially time-consuming threads
+     */
     @PostMapping("/addcomputer")
     public Computer saveComputer(@RequestBody Computer c) throws InterruptedException {
         lock.lock();
@@ -28,6 +35,10 @@ public class ComputerController {
         return cm;
     }
 
+    /**
+     * This query gets all the attributes of the computers object from the database and saves as a list
+     * @return get all attributes of the computer entity which are computer id, screenResolution, storageCapacity, memory, processor
+     */
     @GetMapping("/getcomputeralldetails")
     public List<Computer> getComputerDetails(){
 
@@ -37,6 +48,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by id from the database and saves as a list
+     * @param id primary key of computer (generated automatically)
+     * @return get the computer list from service by id
+     */
     @GetMapping("/getcomputer/{id}")
     public Computer getComputer(@PathVariable int id){
         lock.lock();
@@ -45,6 +61,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by screen resolution from the database and saves as a list
+     * @param screenResolution an attribute in computer
+     * @return get the computer list from service by screenResolution
+     */
     @GetMapping("/getcomputersbyscreenresolution/{screenResolution}")
     public List<Computer> getComputerByScreenResolution(@PathVariable String screenResolution){
         lock.lock();
@@ -53,6 +74,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by storage capacity from the database and saves as a list
+     * @param storageCapacity an attribute in computer
+     * @return get the computer list from service by storageCapacity
+     */
     @GetMapping("/getcomputersbystoragecapacity/{storageCapacity}")
     public List<Computer> getComputerByStorageCapacity(@PathVariable String storageCapacity){
         lock.lock();
@@ -61,6 +87,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by memory from the database and saves as a list
+     * @param memory an attribute in computer
+     * @return get the computer list from service by memory
+     */
     @GetMapping("/getcomputersbymemory/{memory}")
     public List<Computer> getComputerByMemory(@PathVariable String memory){
         lock.lock();
@@ -69,6 +100,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by processor from the database and saves as a list
+     * @param processor an attribute in computer
+     * @return get the computer list from service by processor
+     */
     @GetMapping("/getcomputersbyprocessor/{processor}")
     public List<Computer> getComputerByProcessor(@PathVariable String processor){
         lock.lock();
@@ -77,6 +113,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by model from the database and saves as a list
+     * @param model attribute of product return list of computers that match the model parameter
+     * @return gets the computers from database by their model given by the user
+     */
     @GetMapping("/getcomputersbymodel/{model}")
     public List<Computer> getComputerByModel(@PathVariable String model){
         lock.lock();
@@ -85,6 +126,11 @@ public class ComputerController {
         return  list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by price from the database and saves as a list
+     * @param price attribute of product return list of computers that match the price parameter
+     * @return gets the computers from database by their price given by the user
+     */
     @GetMapping("/getcomputersbyprice/{price}")
     public List<Computer> getComputerByPrice(@PathVariable int price){
         lock.lock();
@@ -93,6 +139,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by label from the database and saves as a list
+     * @param label attribute of product return list of computers that match the label parameter
+     * @return gets the computers from database by their label given by the user
+     */
     // Redundant, but keep it for GUI, it might be useful
     @GetMapping("/getcomputersbylabel/{label}")
     public List<Computer> getComputerByLabel(@PathVariable String label){
@@ -102,6 +153,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by screensize from the database and saves as a list
+     * @param screensize attribute of product return list of computers that match the screensize parameter
+     * @return gets the computers from database by their screensize given by the user
+     */
     @GetMapping("/getcomputersbyscreensize/{screensize}")
     public List<Computer> getComputerByScreensize(@PathVariable int screensize){
         lock.lock();
@@ -110,6 +166,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by brandname from the database and saves as a list
+     * @param brand_name attribute of brand return list of computers that match the brand_name parameter
+     * @return gets the computers from database by their brand_name given by the user
+     */
     @GetMapping("/getcomputersbybrand/{brand_name}")
     public List<Computer> getComputersByBrand(@PathVariable String brand_name){
         lock.lock();
@@ -118,6 +179,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object from by comment the database and saves as a list
+     * @param comment attribute of comment and rate return list of computers that match the comment parameter
+     * @return gets the computers from database by their comment given by the user
+     */
     @GetMapping("/getcomputersbycomment/{comment}")
     public List<Computer> getComputersByComment(@PathVariable String comment){
         lock.lock();
@@ -126,6 +192,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by rate from the database and saves as a list
+     * @param rate attribute of comment and rate return list of computers that match the rate parameter
+     * @return gets the computers from database by their rate given by the user
+     */
     @GetMapping("/getcomputersbyrate/{rate}")
     public List<Computer> getComputersByRate(@PathVariable int rate){
         lock.lock();
@@ -134,6 +205,11 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the computers object by additional feature from the database and saves as a list
+     * @param additionalfeature attribute of additional feature return list of computers that match the additional feature parameter
+     * @return gets the computers from database by their additional feature given by the user
+     */
     @GetMapping("/getcomputersbyadditionalfeature/{additionalfeature}")
     public List<Computer> getComputersByAdditionalFeature(@PathVariable String additionalfeature){
         lock.lock();
@@ -142,6 +218,12 @@ public class ComputerController {
         return list;
     }
 
+    /**
+     * This query makes a connection between additional features and product which returns to a new table called product_has_afs
+     * @param computerID attribute of computer id return list of computers
+     * @param afId attribute of additional feature id return list of computers
+     * @return to the table product_has_afs
+     */
     @GetMapping("/updateComputer/addAdditionalFeatures/{computerID}/{afId}")
     public Computer updateComputer(@PathVariable int computerID, @PathVariable int afId){
         lock.lock();
@@ -154,6 +236,12 @@ public class ComputerController {
 
     }
 
+    /**
+     * This query is just used from desktopApp. User uses the desktopApp to input a label this label is saved to database
+     * @param computerID attribute of computer id return list of computers
+     * @param label attribute of product label return list of computers
+     * @return
+     */
     @GetMapping("/updateComputer/label/{computerID}/{label}")
     public Computer updateComputerLabel(@PathVariable int computerID, @PathVariable String label){
         lock.lock();
@@ -164,6 +252,29 @@ public class ComputerController {
         return cm;
     }
 
+    /**
+     *
+     * @param product_id
+     * @param model
+     * @param model1
+     * @param model2
+     * @param price
+     * @param label
+     * @param screensize
+     * @param screen_resolution
+     * @param storage_capacity
+     * @param memory
+     * @param processor
+     * @param minprice
+     * @param maxprice
+     * @param minscreensize
+     * @param maxscreensize
+     * @param afs_name
+     * @param comment
+     * @param rate
+     * @param brand_name
+     * @return
+     */
     @GetMapping("/getcomputersbysearch")
     public List<Computer> getPhonesBySearch(@RequestParam(required = false) Integer product_id,
                                             @RequestParam(required = false) String model,

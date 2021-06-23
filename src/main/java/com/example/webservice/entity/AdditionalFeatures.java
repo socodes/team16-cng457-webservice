@@ -19,6 +19,9 @@ public class AdditionalFeatures {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int afs_id;
 
+    /**
+     * Many to many relationship was establish between additional feature and product
+     */
     @ManyToMany(mappedBy = "additionalFeaturesList", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
     @JsonIgnore
     private List<Product> productList;

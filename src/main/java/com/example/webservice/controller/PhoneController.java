@@ -22,6 +22,12 @@ public class PhoneController {
 
     Lock lock = new ReentrantLock();
 
+    /**
+     *This query saves all attributes of the phone to database
+     * @param p name of the entity
+     * @return save the phone list to service
+     * @throws InterruptedException for interrupting potentially time-consuming threads
+     */
     @PostMapping("/addphone")
     public Product savePhone(@RequestBody Phone p) throws InterruptedException {
         lock.lock();
@@ -31,11 +37,20 @@ public class PhoneController {
         return pr;
     }
 
+    /**
+     * This query gets all the attributes of the phones object by id from the database and saves as a list
+     * @param id primary key of phone (generated automatically)
+     * @return get the phone list from service by id
+     */
     @GetMapping("/getphone/{id}")
     public Product getPhone(@PathVariable int id) {
         return phoneService.getPhone(id);
     }
 
+    /**
+     * This query gets all the attributes of the phones object from the database and saves as a list
+     * @return get all attributes of the phone entity which are phone id and internal memory
+     */
     @GetMapping("/getphonealldetails")
     public List<Phone> getPhoneDetails() {
         lock.lock();
@@ -44,6 +59,11 @@ public class PhoneController {
         return  list;
     }
 
+    /**
+     * This query gets all the attributes of the phones object by internalMemory from the database and saves as a list
+     * @param internalMemory an attribute in phone
+     * @return get the phones list from service by internalMemory
+     */
     @GetMapping("/getphonesbyinternalmemory/{internalMemory}")
     public List<Phone> getPhonesByInternalMemory(@PathVariable String internalMemory) {
         lock.lock();
@@ -52,6 +72,11 @@ public class PhoneController {
         return  list;
     }
 
+    /**
+     * This query gets all the attributes of the phones object by model from the database and saves as a list
+     * @param model attribute of product return list of phones that match the model parameter
+     * @return gets the phones from database by their model given by the user
+     */
     @GetMapping("/getphonesbymodel/{model}")
     public List<Phone> getPhonesByModel(@PathVariable String model) {
         lock.lock();
@@ -60,6 +85,11 @@ public class PhoneController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the phones object by price from the database and saves as a list
+     * @param price attribute of product return list of phones that match the price parameter
+     * @return gets the phones from database by their price given by the user
+     */
     @GetMapping("/getphonesbyprice/{price}")
     public List<Phone> getPhonesByPrice(@PathVariable int price) {
         lock.lock();
@@ -68,6 +98,11 @@ public class PhoneController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the phones object by label from the database and saves as a list
+     * @param label attribute of product return list of phones that match the label parameter
+     * @return gets the phones from database by their label given by the user
+     */
     // Redundant, but keep it for GUI, it might be useful
     @GetMapping("/getphonesbylabel/{label}")
     public List<Phone> getPhonesByLabel(@PathVariable String label) {
@@ -77,6 +112,11 @@ public class PhoneController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the phones object by screensize from the database and saves as a list
+     * @param screensize attribute of product return list of phones that match the screensize parameter
+     * @return gets the phones from database by their screensize given by the user
+     */
     @GetMapping("/getphonesbyscreensize/{screensize}")
     public List<Phone> getPhonesByScreensize(@PathVariable int screensize) {
         lock.lock();
@@ -85,6 +125,11 @@ public class PhoneController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the phones object by brandname from the database and saves as a list
+     * @param  name attribute of brand return list of phones that match the brand_name parameter
+     * @return gets the phones from database by their brand_name given by the user
+     */
     @GetMapping("/getphonesbybrand/{name}")
     public List<Phone> getPhonesFromBrand(@PathVariable String name) {
         lock.lock();
@@ -93,6 +138,11 @@ public class PhoneController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the phones object from by comment the database and saves as a list
+     * @param comment attribute of comment and rate return list of phones that match the comment parameter
+     * @return gets the phones from database by their comment given by the user
+     */
     @GetMapping("/getphonesbycomment/{comment}")
     public List<Phone> getPhonesByComment(@PathVariable String comment) {
         lock.lock();
@@ -101,6 +151,11 @@ public class PhoneController {
         return list;
     }
 
+    /**
+     * This query gets all the attributes of the phones object by rate from the database and saves as a list
+     * @param rate attribute of comment and rate return list of phones that match the rate parameter
+     * @return gets the phones from database by their rate given by the user
+     */
     @GetMapping("/getphonesbyrate/{rate}")
     public List<Phone> getPhonesByRate(@PathVariable int rate) {
         lock.lock();
@@ -110,6 +165,11 @@ public class PhoneController {
 
     }
 
+    /**
+     * This query gets all the attributes of the phones object by additional feature from the database and saves as a list
+     * @param additionalfeature attribute of additional feature return list of phones that match the additional feature parameter
+     * @return gets the phones from database by their additional feature given by the user
+     */
     @GetMapping("/getphonesbyadditionalfeature/{additionalfeature}")
     public List<Phone> getPhonesByAdditionalFeature(@PathVariable String additionalfeature) {
         lock.lock();
@@ -118,6 +178,12 @@ public class PhoneController {
         return list;
     }
 
+    /**
+     * This query makes a connection between additional features and product which returns to a new table called product_has_afs
+     * @param phoneID attribute of phone id return list of phones
+     * @param afId attribute of additional feature id return list of phones
+     * @return to the table product_has_afs
+     */
     @GetMapping("/updatePhone/addAdditionalFeatures/{phoneID}/{afId}")
     public Phone updatePhone(@PathVariable int phoneID, @PathVariable int afId){
         lock.lock();
