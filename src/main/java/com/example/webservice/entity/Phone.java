@@ -1,7 +1,5 @@
 package com.example.webservice.entity;
 
-
-
 import lombok.*;
 
 import javax.persistence.*;

@@ -17,9 +17,6 @@ public class Brand {
     private int brand_id;
     private String brand_name;
 
-    /**
-     * Many to one relation of product brands
-     */
     @ManyToOne
     private Product product;
 
