@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 @RestController
 public class ComputerController {
@@ -16,93 +18,150 @@ public class ComputerController {
     @Autowired
     AdditionalFeaturesService additionalFeaturesService;
 
+    Lock lock = new ReentrantLock();
     @PostMapping("/addcomputer")
-    public Computer saveComputer(@RequestBody Computer c){ return computerService.saveComputer(c); }
+    public Computer saveComputer(@RequestBody Computer c) throws InterruptedException {
+        lock.lock();
+        //Thread.sleep(10000); //For testing lock, you can add this line.
+        Computer cm =  computerService.saveComputer(c);
+        lock.unlock();
+        return cm;
+    }
 
     @GetMapping("/getcomputeralldetails")
     public List<Computer> getComputerDetails(){
-        return computerService.getComputerDetails();
+
+        lock.lock();
+        List<Computer> list =  computerService.getComputerDetails();
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputer/{id}")
     public Computer getComputer(@PathVariable int id){
-        return computerService.getComputer(id);
+        lock.lock();
+        Computer list = computerService.getComputer(id);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbyscreenresolution/{screenResolution}")
     public List<Computer> getComputerByScreenResolution(@PathVariable String screenResolution){
-        return computerService.getComputerByScreenResolution(screenResolution);
+        lock.lock();
+        List<Computer> list = computerService.getComputerByScreenResolution(screenResolution);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbystoragecapacity/{storageCapacity}")
     public List<Computer> getComputerByStorageCapacity(@PathVariable String storageCapacity){
-        return computerService.getComputerByStorageCapacity(storageCapacity);
+        lock.lock();
+        List<Computer> list = computerService.getComputerByStorageCapacity(storageCapacity);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbymemory/{memory}")
     public List<Computer> getComputerByMemory(@PathVariable String memory){
-        return computerService.getComputerByMemory(memory);
+        lock.lock();
+        List<Computer> list = computerService.getComputerByMemory(memory);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbyprocessor/{processor}")
     public List<Computer> getComputerByProcessor(@PathVariable String processor){
-        return computerService.getComputerByProcessor(processor);
+        lock.lock();
+        List<Computer> list = computerService.getComputerByProcessor(processor);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbymodel/{model}")
     public List<Computer> getComputerByModel(@PathVariable String model){
-        return computerService.getComputerByModel(model);
+        lock.lock();
+        List<Computer> list = computerService.getComputerByModel(model);
+        lock.unlock();
+        return  list;
     }
 
     @GetMapping("/getcomputersbyprice/{price}")
     public List<Computer> getComputerByPrice(@PathVariable int price){
-        return computerService.getComputerByPrice(price);
+        lock.lock();
+        List<Computer> list = computerService.getComputerByPrice(price);
+        lock.unlock();
+        return list;
     }
 
     // Redundant, but keep it for GUI, it might be useful
     @GetMapping("/getcomputersbylabel/{label}")
     public List<Computer> getComputerByLabel(@PathVariable String label){
-        return computerService.getComputerByLabel(label);
+        lock.lock();
+        List<Computer> list = computerService.getComputerByLabel(label);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbyscreensize/{screensize}")
     public List<Computer> getComputerByScreensize(@PathVariable int screensize){
-        return computerService.getComputerByScreensize(screensize);
+        lock.lock();
+        List<Computer> list = computerService.getComputerByScreensize(screensize);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbybrand/{brand_name}")
     public List<Computer> getComputersByBrand(@PathVariable String brand_name){
-        return computerService.getComputersByBrand(brand_name);
+        lock.lock();
+        List<Computer> list = computerService.getComputersByBrand(brand_name);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbycomment/{comment}")
     public List<Computer> getComputersByComment(@PathVariable String comment){
-        return computerService.getComputersByComment(comment);
+        lock.lock();
+        List<Computer> list = computerService.getComputersByComment(comment);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbyrate/{rate}")
     public List<Computer> getComputersByRate(@PathVariable int rate){
-        return computerService.getComputersByRate(rate);
+        lock.lock();
+        List<Computer> list = computerService.getComputersByRate(rate);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/getcomputersbyadditionalfeature/{additionalfeature}")
     public List<Computer> getComputersByAdditionalFeature(@PathVariable String additionalfeature){
-        return computerService.getComputersByAdditionalFeature(additionalfeature);
+        lock.lock();
+        List<Computer> list = computerService.getComputersByAdditionalFeature(additionalfeature);
+        lock.unlock();
+        return list;
     }
 
     @GetMapping("/updateComputer/addAdditionalFeatures/{computerID}/{afId}")
     public Computer updateComputer(@PathVariable int computerID, @PathVariable int afId){
+        lock.lock();
         Computer tempComputer = computerService.getComputer(computerID);
         AdditionalFeatures additionalFeatures = additionalFeaturesService.getAdditionalFeatures(afId);
         tempComputer.getAdditionalFeaturesList().add(additionalFeatures);
-        return computerService.saveComputer(tempComputer);
+        Computer cm = computerService.saveComputer(tempComputer);
+        lock.unlock();
+        return cm;
+
     }
 
     @GetMapping("/updateComputer/label/{computerID}/{label}")
     public Computer updateComputerLabel(@PathVariable int computerID, @PathVariable String label){
+        lock.lock();
         Computer tempComputer = computerService.getComputer(computerID);
         tempComputer.setLabel(label);
-        return computerService.saveComputer(tempComputer);
+        Computer cm =  computerService.saveComputer(tempComputer);
+        lock.unlock();
+        return cm;
     }
 
     @GetMapping("/getcomputersbysearch")
@@ -125,7 +184,7 @@ public class ComputerController {
                                             @RequestParam(required = false) String comment,
                                             @RequestParam(required = false) Integer rate,
                                             @RequestParam(required = false) String brand_name) {
-
+        lock.lock();
         List<Computer> computerList = computerService.getComputerDetails();
 
         if (product_id != null) {
@@ -312,7 +371,7 @@ public class ComputerController {
                 }
             }
         }
-
+        lock.unlock();
         return computerList;
     }
 
