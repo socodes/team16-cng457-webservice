@@ -18,6 +18,9 @@ public class CommentAndRate {
     private int rate;
     private String comment;
 
+    /**
+     * Many to one relation of product comments and rates
+     */
     @ManyToOne // owning
     private Product product;
 
