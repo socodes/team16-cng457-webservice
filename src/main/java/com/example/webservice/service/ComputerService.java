@@ -20,7 +20,11 @@ public class ComputerService {
         return computerRepository.findById(id).orElse(null);
     }
 
-    public List<Computer> getComputerDetails() { return computerRepository.findAll(); }
+    public List<Computer> getComputerDetails() {
+        List<Computer> c =computerRepository.findAll();
+        c.add(new Computer());
+        return c;
+    }
 
     public List<Computer> getComputerByScreenResolution(String screenResolution) { return computerRepository.getComputersByScreenResolution(screenResolution); }
 

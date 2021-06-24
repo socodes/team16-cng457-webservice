@@ -16,7 +16,11 @@ public class PhoneService {
 
     public Phone getPhone(int id) { return phoneRepository.findById(id).orElse(null); }
 
-    public List<Phone> getPhoneDetails() { return phoneRepository.findAll(); }
+    public List<Phone> getPhoneDetails() {
+        List<Phone> list = phoneRepository.findAll();
+        list.add(new Phone());
+        return  list;
+    }
 
     public List<Phone> getPhonesByInternalMemory(String internalMemory) { return phoneRepository.getPhonesByInternalMemory(internalMemory); }
     
