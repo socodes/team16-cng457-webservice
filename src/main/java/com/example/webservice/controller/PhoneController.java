@@ -47,7 +47,10 @@ public class PhoneController {
      */
     @GetMapping("/getphone/{id}")
     public Product getPhone(@PathVariable int id) {
-        return phoneService.getPhone(id);
+        lock.lock();
+        Phone ph = phoneService.getPhone(id);
+        lock.unlock();
+        return ph;
     }
 
     /**
