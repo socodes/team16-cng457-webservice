@@ -1,54 +1,124 @@
 package com.example.webservice.service;
 
 import com.example.webservice.entity.Computer;
-import com.example.webservice.entity.Phone;
 import com.example.webservice.repository.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Service
 public class ComputerService {
     @Autowired
     ComputerRepository computerRepository;
+    Lock lock = new ReentrantLock();
 
-    public Computer saveComputer(Computer c){ return computerRepository.save(c); }
+    public Computer saveComputer(Computer c) throws InterruptedException {
+        lock.lock();
+        Thread.sleep(10000); //For testing, you can add this line
+        Computer saveComp = computerRepository.save(c);
+        lock.unlock();
+        return saveComp;
+    }
 
-    public Computer getComputer(int id)
-    {
-        return computerRepository.findById(id).orElse(null);
+    public Computer getComputer(int id) {
+        lock.lock();
+        Computer getCompByID = computerRepository.findById(id).orElse(null);
+        lock.unlock();
+        return getCompByID;
     }
 
     public List<Computer> getComputerDetails() {
-        List<Computer> c =computerRepository.findAll();
-        return c;
+        lock.lock();
+        List<Computer> getCompAllDetails =computerRepository.findAll();
+        lock.unlock();
+        return getCompAllDetails;
     }
 
-    public List<Computer> getComputerByScreenResolution(String screenResolution) { return computerRepository.getComputersByScreenResolution(screenResolution); }
+    public List<Computer> getComputerByScreenResolution(String screenResolution) {
+        lock.lock();
+        List<Computer> getCompByScreenResolution = computerRepository.getComputersByScreenResolution(screenResolution);
+        lock.unlock();
+        return getCompByScreenResolution;
+    }
 
-    public List<Computer> getComputerByStorageCapacity(String storageCapacity) { return computerRepository.getComputersByStorageCapacity(storageCapacity); }
+    public List<Computer> getComputerByStorageCapacity(String storageCapacity) {
+        lock.lock();
+        List<Computer> getCompByStorageCapacity = computerRepository.getComputersByStorageCapacity(storageCapacity);
+        lock.unlock();
+        return getCompByStorageCapacity;
+    }
 
     public List<Computer> getComputerByMemory(String memory) {
-        return computerRepository.getComputersByMemory(memory);
+        lock.lock();
+        List<Computer> getCompByMemory = computerRepository.getComputersByMemory(memory);
+        lock.unlock();
+        return getCompByMemory;
     }
 
-    public List<Computer> getComputerByProcessor(String processor) { return computerRepository.getComputersByProcessor(processor); }
+    public List<Computer> getComputerByProcessor(String processor) {
+        lock.lock();
+        List<Computer> getCompByProcessor = computerRepository.getComputersByProcessor(processor);
+        lock.unlock();
+        return getCompByProcessor;
+    }
 
-    public List<Computer> getComputerByModel(String model) { return computerRepository.getComputerByModel(model); }
+    public List<Computer> getComputerByModel(String model) {
+        lock.lock();
+        List<Computer> getCompByModel = computerRepository.getComputerByModel(model);
+        lock.unlock();
+        return getCompByModel;
+    }
 
-    public List<Computer> getComputerByPrice(int price) { return computerRepository.getComputerByPrice(price); }
+    public List<Computer> getComputerByPrice(int price) {
+        lock.lock();
+        List<Computer> getCompByPrice = computerRepository.getComputerByPrice(price);
+        lock.unlock();
+        return getCompByPrice;
+    }
 
-    public List<Computer> getComputerByLabel(String label) { return computerRepository.getComputerByLabel(label); }
+    public List<Computer> getComputerByLabel(String label) {
+        lock.lock();
+        List<Computer> getCompByLabel = computerRepository.getComputerByLabel(label);
+        lock.unlock();
+        return getCompByLabel;
+    }
 
-    public List<Computer> getComputerByScreensize(int screensize) { return computerRepository.getComputerByScreensize(screensize); }
+    public List<Computer> getComputerByScreensize(int screensize) {
+        lock.lock();
+        List<Computer> getCompByScreensize = computerRepository.getComputerByScreensize(screensize);
+        lock.unlock();
+        return getCompByScreensize;
+    }
 
-    public List<Computer> getComputersByBrand(String brand_name) { return computerRepository.getComputersByBrand(brand_name); }
+    public List<Computer> getComputersByBrand(String brand_name) {
+        lock.lock();
+        List<Computer> getCompByBrand = computerRepository.getComputersByBrand(brand_name);
+        lock.unlock();
+        return getCompByBrand;
+    }
 
-    public List<Computer> getComputersByComment(String comment) { return computerRepository.getComputersByComment(comment); }
+    public List<Computer> getComputersByComment(String comment) {
+        lock.lock();
+        List<Computer> getCompByComment = computerRepository.getComputersByComment(comment);
+        lock.unlock();
+        return getCompByComment;
+    }
 
-    public List<Computer> getComputersByRate(int rate) { return computerRepository.getComputersByRate(rate); }
+    public List<Computer> getComputersByRate(int rate) {
+        lock.lock();
+        List<Computer> getCompByRate = computerRepository.getComputersByRate(rate);
+        lock.unlock();
+        return getCompByRate;
+    }
 
-    public List<Computer> getComputersByAdditionalFeature(String additionalfeature) { return computerRepository.getComputersByAdditionalFeature(additionalfeature); }
+    public List<Computer> getComputersByAdditionalFeature(String additionalfeature) {
+        lock.lock();
+        List<Computer> getCompByAddFeature = computerRepository.getComputersByAdditionalFeature(additionalfeature);
+        lock.unlock();
+        return getCompByAddFeature;
+    }
 
 }

@@ -23,7 +23,6 @@ public class PhoneController {
     @Autowired
     AdditionalFeaturesService additionalFeaturesService;
 
-    Lock lock = new ReentrantLock();
 
     /**
      *This query saves all attributes of the phone to database
@@ -33,11 +32,7 @@ public class PhoneController {
      */
     @PostMapping("/addphone")
     public Product savePhone(@RequestBody Phone p) throws InterruptedException {
-        lock.lock();
-        //Thread.sleep(10000); //For testing, you can add this line
-        Product pr = phoneService.savePhone(p);
-        lock.unlock();
-        return pr;
+        return phoneService.savePhone(p);
     }
 
     /**
@@ -46,11 +41,9 @@ public class PhoneController {
      * @return the phone list from service by id
      */
     @GetMapping("/getphone/{id}")
-    public Product getPhone(@PathVariable int id) {
-        lock.lock();
-        Phone ph = phoneService.getPhone(id);
-        lock.unlock();
-        return ph;
+    public Product getPhone(@PathVariable int id) throws InterruptedException {
+        return phoneService.getPhone(id);
+
     }
 
     /**
@@ -59,10 +52,7 @@ public class PhoneController {
      */
     @GetMapping("/getphonealldetails")
     public List<Phone> getPhoneDetails() {
-        lock.lock();
-        List<Phone> list =  phoneService.getPhoneDetails();
-        lock.unlock();
-        return  list;
+        return   phoneService.getPhoneDetails();
     }
 
     /**
@@ -72,10 +62,8 @@ public class PhoneController {
      */
     @GetMapping("/getphonesbyinternalmemory/{internalMemory}")
     public List<Phone> getPhonesByInternalMemory(@PathVariable String internalMemory) {
-        lock.lock();
-        List<Phone> list =  phoneService.getPhonesByInternalMemory(internalMemory);
-        lock.unlock();
-        return  list;
+        return  phoneService.getPhonesByInternalMemory(internalMemory);
+
     }
 
     /**
@@ -85,10 +73,7 @@ public class PhoneController {
      */
     @GetMapping("/getphonesbymodel/{model}")
     public List<Phone> getPhonesByModel(@PathVariable String model) {
-        lock.lock();
-        List<Phone> list = phoneService.getPhonesByModel(model);
-        lock.unlock();
-        return list;
+        return phoneService.getPhonesByModel(model);
     }
 
     /**
@@ -98,10 +83,9 @@ public class PhoneController {
      */
     @GetMapping("/getphonesbyprice/{price}")
     public List<Phone> getPhonesByPrice(@PathVariable int price) {
-        lock.lock();
-        List<Phone> list = phoneService.getPhonesByPrice(price);
-        lock.unlock();
-        return list;
+
+        return phoneService.getPhonesByPrice(price);
+
     }
 
     /**
@@ -112,10 +96,9 @@ public class PhoneController {
     // Redundant, but keep it for GUI, it might be useful
     @GetMapping("/getphonesbylabel/{label}")
     public List<Phone> getPhonesByLabel(@PathVariable String label) {
-        lock.lock();
-        List<Phone> list = phoneService.getPhonesByLabel(label);
-        lock.unlock();
-        return list;
+
+       return phoneService.getPhonesByLabel(label);
+
     }
 
     /**
@@ -125,10 +108,8 @@ public class PhoneController {
      */
     @GetMapping("/getphonesbyscreensize/{screensize}")
     public List<Phone> getPhonesByScreensize(@PathVariable int screensize) {
-        lock.lock();
-        List<Phone> list = phoneService.getPhonesByScreensize(screensize);
-        lock.unlock();
-        return list;
+        return phoneService.getPhonesByScreensize(screensize);
+
     }
 
     /**
@@ -138,10 +119,8 @@ public class PhoneController {
      */
     @GetMapping("/getphonesbybrand/{name}")
     public List<Phone> getPhonesFromBrand(@PathVariable String name) {
-        lock.lock();
-        List<Phone> list = phoneService.getPhonesByBrand(name);
-        lock.unlock();
-        return list;
+        return phoneService.getPhonesByBrand(name);
+
     }
 
     /**
@@ -151,10 +130,8 @@ public class PhoneController {
      */
     @GetMapping("/getphonesbycomment/{comment}")
     public List<Phone> getPhonesByComment(@PathVariable String comment) {
-        lock.lock();
-        List<Phone> list = phoneService.getPhonesByComment(comment);
-        lock.unlock();
-        return list;
+        return phoneService.getPhonesByComment(comment);
+
     }
 
     /**
@@ -164,10 +141,8 @@ public class PhoneController {
      */
     @GetMapping("/getphonesbyrate/{rate}")
     public List<Phone> getPhonesByRate(@PathVariable int rate) {
-        lock.lock();
-        List<Phone> list = phoneService.getPhonesByRate(rate);
-        lock.unlock();
-        return list;
+
+        return phoneService.getPhonesByRate(rate);
 
     }
 
@@ -178,10 +153,8 @@ public class PhoneController {
      */
     @GetMapping("/getphonesbyadditionalfeature/{additionalfeature}")
     public List<Phone> getPhonesByAdditionalFeature(@PathVariable String additionalfeature) {
-        lock.lock();
-        List<Phone> list = phoneService.getPhonesByAdditionalFeature(additionalfeature);
-        lock.unlock();
-        return list;
+        return phoneService.getPhonesByAdditionalFeature(additionalfeature);
+
     }
 
     /**
@@ -191,14 +164,13 @@ public class PhoneController {
      * @return phone object to be updated where the link between afs is saved in the table product_has_afs
      */
     @GetMapping("/updatePhone/addAdditionalFeatures/{phoneID}/{afId}")
-    public Phone updatePhone(@PathVariable int phoneID, @PathVariable int afId){
-        lock.lock();
+    public Phone updatePhone(@PathVariable int phoneID, @PathVariable int afId) throws InterruptedException {
+
         Phone tempPhone = phoneService.getPhone(phoneID);
         AdditionalFeatures additionalFeatures = additionalFeaturesService.getAdditionalFeatures(afId);
         tempPhone.getAdditionalFeaturesList().add(additionalFeatures);
-        Phone pr= phoneService.savePhone(tempPhone);
-        lock.unlock();
-        return pr;
+        return phoneService.savePhone(tempPhone);
+
     }
 
     /**
@@ -208,13 +180,12 @@ public class PhoneController {
      * @return phone object which will be updated by the label attribute
      */
     @GetMapping("/updatePhone/label/{phoneID}/{label}")
-    public Phone updatePhoneLabel(@PathVariable int phoneID, @PathVariable String label){
-        lock.lock();
+    public Phone updatePhoneLabel(@PathVariable int phoneID, @PathVariable String label) throws InterruptedException {
+
         Phone tempPhone = phoneService.getPhone(phoneID);
         tempPhone.setLabel(label);
-        Phone ph = phoneService.savePhone(tempPhone);
-        lock.unlock();
-        return ph;
+        return phoneService.savePhone(tempPhone);
+
     }
 
     /**
@@ -259,7 +230,7 @@ public class PhoneController {
                                   @RequestParam(required = false) String comment,
                                   @RequestParam(required = false) Integer rate,
                                   @RequestParam(required = false) String brand_name) {
-        lock.lock();
+
         List<Phone> phoneList = phoneService.getPhoneDetails();
 
         if (product_id != null) {
@@ -407,7 +378,7 @@ public class PhoneController {
                 }
             }
         }
-        lock.unlock();
+
         return phoneList;
     }
 
