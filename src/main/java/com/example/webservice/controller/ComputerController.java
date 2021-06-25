@@ -22,7 +22,6 @@ public class ComputerController {
     @Autowired
     AdditionalFeaturesService additionalFeaturesService;
 
-    Lock lock = new ReentrantLock();
 
     /**
      * This query saves all attributes of the computer to database
@@ -32,11 +31,7 @@ public class ComputerController {
      */
     @PostMapping("/addcomputer")
     public Computer saveComputer(@RequestBody Computer c) throws InterruptedException {
-        lock.lock();
-        //Thread.sleep(10000); //For testing lock, you can add this line.
-        Computer cm =  computerService.saveComputer(c);
-        lock.unlock();
-        return cm;
+        return computerService.saveComputer(c);
     }
 
     /**
@@ -45,10 +40,8 @@ public class ComputerController {
      */
     @GetMapping("/getcomputeralldetails")
     public List<Computer> getComputerDetails(){
-        lock.lock();
-        List<Computer> list =  computerService.getComputerDetails();
-        lock.unlock();
-        return list;
+        return computerService.getComputerDetails();
+
     }
 
     /**
@@ -58,10 +51,7 @@ public class ComputerController {
      */
     @GetMapping("/getcomputer/{id}")
     public Computer getComputer(@PathVariable int id){
-        lock.lock();
-        Computer list = computerService.getComputer(id);
-        lock.unlock();
-        return list;
+        return computerService.getComputer(id);
     }
 
     /**
@@ -71,10 +61,7 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbyscreenresolution/{screenResolution}")
     public List<Computer> getComputerByScreenResolution(@PathVariable String screenResolution){
-        lock.lock();
-        List<Computer> list = computerService.getComputerByScreenResolution(screenResolution);
-        lock.unlock();
-        return list;
+        return computerService.getComputerByScreenResolution(screenResolution);
     }
 
     /**
@@ -84,10 +71,7 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbystoragecapacity/{storageCapacity}")
     public List<Computer> getComputerByStorageCapacity(@PathVariable String storageCapacity){
-        lock.lock();
-        List<Computer> list = computerService.getComputerByStorageCapacity(storageCapacity);
-        lock.unlock();
-        return list;
+        return computerService.getComputerByStorageCapacity(storageCapacity);
     }
 
     /**
@@ -97,10 +81,8 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbymemory/{memory}")
     public List<Computer> getComputerByMemory(@PathVariable String memory){
-        lock.lock();
-        List<Computer> list = computerService.getComputerByMemory(memory);
-        lock.unlock();
-        return list;
+        return computerService.getComputerByMemory(memory);
+
     }
 
     /**
@@ -110,10 +92,7 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbyprocessor/{processor}")
     public List<Computer> getComputerByProcessor(@PathVariable String processor){
-        lock.lock();
-        List<Computer> list = computerService.getComputerByProcessor(processor);
-        lock.unlock();
-        return list;
+        return computerService.getComputerByProcessor(processor);
     }
 
     /**
@@ -123,10 +102,7 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbymodel/{model}")
     public List<Computer> getComputerByModel(@PathVariable String model){
-        lock.lock();
-        List<Computer> list = computerService.getComputerByModel(model);
-        lock.unlock();
-        return  list;
+        return computerService.getComputerByModel(model);
     }
 
     /**
@@ -136,10 +112,7 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbyprice/{price}")
     public List<Computer> getComputerByPrice(@PathVariable int price){
-        lock.lock();
-        List<Computer> list = computerService.getComputerByPrice(price);
-        lock.unlock();
-        return list;
+        return computerService.getComputerByPrice(price);
     }
 
     /**
@@ -150,10 +123,7 @@ public class ComputerController {
     // Redundant, but keep it for GUI, it might be useful
     @GetMapping("/getcomputersbylabel/{label}")
     public List<Computer> getComputerByLabel(@PathVariable String label){
-        lock.lock();
-        List<Computer> list = computerService.getComputerByLabel(label);
-        lock.unlock();
-        return list;
+        return computerService.getComputerByLabel(label);
     }
 
     /**
@@ -163,10 +133,9 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbyscreensize/{screensize}")
     public List<Computer> getComputerByScreensize(@PathVariable int screensize){
-        lock.lock();
-        List<Computer> list = computerService.getComputerByScreensize(screensize);
-        lock.unlock();
-        return list;
+
+        return computerService.getComputerByScreensize(screensize);
+
     }
 
     /**
@@ -176,10 +145,8 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbybrand/{brand_name}")
     public List<Computer> getComputersByBrand(@PathVariable String brand_name){
-        lock.lock();
-        List<Computer> list = computerService.getComputersByBrand(brand_name);
-        lock.unlock();
-        return list;
+       return computerService.getComputersByBrand(brand_name);
+
     }
 
     /**
@@ -189,10 +156,7 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbycomment/{comment}")
     public List<Computer> getComputersByComment(@PathVariable String comment){
-        lock.lock();
-        List<Computer> list = computerService.getComputersByComment(comment);
-        lock.unlock();
-        return list;
+        return computerService.getComputersByComment(comment);
     }
 
     /**
@@ -202,10 +166,8 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbyrate/{rate}")
     public List<Computer> getComputersByRate(@PathVariable int rate){
-        lock.lock();
-        List<Computer> list = computerService.getComputersByRate(rate);
-        lock.unlock();
-        return list;
+        return computerService.getComputersByRate(rate);
+
     }
 
     /**
@@ -215,10 +177,7 @@ public class ComputerController {
      */
     @GetMapping("/getcomputersbyadditionalfeature/{additionalfeature}")
     public List<Computer> getComputersByAdditionalFeature(@PathVariable String additionalfeature){
-        lock.lock();
-        List<Computer> list = computerService.getComputersByAdditionalFeature(additionalfeature);
-        lock.unlock();
-        return list;
+        return computerService.getComputersByAdditionalFeature(additionalfeature);
     }
 
     /**
@@ -228,14 +187,12 @@ public class ComputerController {
      * @return computer object to be updated where the link between afs is saved in the table product_has_afs
      */
     @GetMapping("/updateComputer/addAdditionalFeatures/{computerID}/{afId}")
-    public Computer updateComputer(@PathVariable int computerID, @PathVariable int afId){
-        lock.lock();
+    public Computer updateComputer(@PathVariable int computerID, @PathVariable int afId) throws InterruptedException {
         Computer tempComputer = computerService.getComputer(computerID);
         AdditionalFeatures additionalFeatures = additionalFeaturesService.getAdditionalFeatures(afId);
         tempComputer.getAdditionalFeaturesList().add(additionalFeatures);
-        Computer cm = computerService.saveComputer(tempComputer);
-        lock.unlock();
-        return cm;
+        return computerService.saveComputer(tempComputer);
+
 
     }
 
@@ -246,13 +203,11 @@ public class ComputerController {
      * @return computer object which will be updated by the label attribute
      */
     @GetMapping("/updateComputer/label/{computerID}/{label}")
-    public Computer updateComputerLabel(@PathVariable int computerID, @PathVariable String label){
-        lock.lock();
+    public Computer updateComputerLabel(@PathVariable int computerID, @PathVariable String label) throws InterruptedException {
         Computer tempComputer = computerService.getComputer(computerID);
         tempComputer.setLabel(label);
-        Computer cm =  computerService.saveComputer(tempComputer);
-        lock.unlock();
-        return cm;
+        return   computerService.saveComputer(tempComputer);
+
     }
 
     /**
@@ -299,7 +254,7 @@ public class ComputerController {
                                             @RequestParam(required = false) String comment,
                                             @RequestParam(required = false) Integer rate,
                                             @RequestParam(required = false) String brand_name) {
-        lock.lock();
+
         List<Computer> computerList = computerService.getComputerDetails();
 
         if (product_id != null) {
@@ -486,7 +441,6 @@ public class ComputerController {
                 }
             }
         }
-        lock.unlock();
         return computerList;
     }
 
