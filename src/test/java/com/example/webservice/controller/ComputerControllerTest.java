@@ -2,6 +2,7 @@ package com.example.webservice.controller;
 
 import com.example.webservice.WebserviceApplication;
 import com.example.webservice.entity.Computer;
+import com.example.webservice.entity.Phone;
 import com.example.webservice.service.ComputerService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -41,21 +42,12 @@ class ComputerControllerTest {
     @Test
     void getComputerDetails() {
 
-        Computer c1 = new Computer();
-        Computer c2 = new Computer();
-
-        List<Computer> computers = new ArrayList<>();
-
-        computers.add(c1);
-        computers.add(c2);
-
-        when(computerService.getComputerDetails()).thenReturn(new ArrayList(computers));
-
-        List<Computer> computerList = computerController.getComputerDetails();
-        Assertions.assertEquals(computers.size(),computerList.size());
+        assertEquals(
+                this.restTemplate.getForObject("http://localhost:" + port + "/getcomputeralldetails", Computer[].class)[1].getProduct_id(),5);
     }
 
     @Test
     void getComputer() {
+        assertEquals(this.restTemplate.getForObject("http://localhost:" + port + "/getcomputer/6",Phone.class).getProduct_id(),6);
     }
 }
