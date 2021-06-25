@@ -3,6 +3,7 @@ package com.example.webservice.controller;
 import com.example.webservice.WebserviceApplication;
 import com.example.webservice.entity.Computer;
 import com.example.webservice.entity.Phone;
+import com.example.webservice.entity.Product;
 import com.example.webservice.service.ComputerService;
 import com.example.webservice.service.PhoneService;
 import org.junit.jupiter.api.Assertions;
@@ -37,27 +38,15 @@ class PhoneControllerTest {
     @LocalServerPort
     private int port;
 
+    //Test by id. Checks the 1st phone in db if its id is 1 or not.
     @Test
-    void getPhone() {
-
+    void getPhoneId() {
+           assertEquals(this.restTemplate.getForObject("http://localhost:" + port + "/getphone/1",Phone.class).getProduct_id(),1);
     }
 
+    //Test all phones. Takes the all elements in db and checks the 2nd element, if its id is 2 or not.
     @Test
     void getPhoneDetails() {
-
-
-        Phone p1 = new Phone();
-        Phone p2 = new Phone();
-
-        List<Phone> phones = new ArrayList<>();
-
-        phones.add(p1);
-        phones.add(p2);
-
-        when(phoneService.getPhoneDetails()).thenReturn(new ArrayList(phones));
-
-        List<Phone> phoneList = phoneController.getPhoneDetails();
-        //Testing by size.
-        Assertions.assertEquals(phones.size(),phoneList.size());
+        assertEquals(this.restTemplate.getForObject("http://localhost:" + port + "/getphonealldetails",Phone[].class)[1].getProduct_id(),2);
     }
 }

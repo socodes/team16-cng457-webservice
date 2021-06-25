@@ -22,7 +22,6 @@ public class ComputerService {
 
     public List<Computer> getComputerDetails() {
         List<Computer> c =computerRepository.findAll();
-        c.add(new Computer());
         return c;
     }
 

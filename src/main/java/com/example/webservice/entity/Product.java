@@ -16,11 +16,15 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int product_id;
-    private String model;
-    private int price;
-    private String label;
-    private int screensize;
+    protected int product_id;
+    protected String model;
+    protected int price;
+    protected String label;
+    protected int screensize;
+
+    public int getProduct_id(){
+        return product_id;
+    }
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // owned
     private List<CommentAndRate> commentAndRatesList;
