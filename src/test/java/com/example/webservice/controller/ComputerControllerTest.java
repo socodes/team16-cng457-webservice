@@ -39,6 +39,7 @@ class ComputerControllerTest {
 
 
 
+    //Test all phones. Takes the all elements in db and checks the 2nd element, if its id is 5 or not.
     @Test
     void getComputerDetails() {
 
@@ -46,6 +47,7 @@ class ComputerControllerTest {
                 this.restTemplate.getForObject("http://localhost:" + port + "/getcomputeralldetails", Computer[].class)[1].getProduct_id(),5);
     }
 
+    //Test by id. Checks the 6th phone in db if its id is 6 or not.
     @Test
     void getComputer() {
         assertEquals(this.restTemplate.getForObject("http://localhost:" + port + "/getcomputer/6",Phone.class).getProduct_id(),6);
