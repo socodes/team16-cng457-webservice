@@ -17,7 +17,7 @@ public class PhoneService {
 
     public Phone savePhone(Phone p) throws InterruptedException {
         lock.lock();
-        Thread.sleep(10000); //For testing, you can add this line
+        //Thread.sleep(10000); //For testing, you can add this line
         Phone savePhones = phoneRepository.save(p);
         lock.unlock();
         return savePhones;
