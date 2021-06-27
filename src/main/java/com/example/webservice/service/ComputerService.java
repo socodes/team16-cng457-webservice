@@ -17,7 +17,7 @@ public class ComputerService {
 
     public Computer saveComputer(Computer c) throws InterruptedException {
         lock.lock();
-        Thread.sleep(10000); //For testing, you can add this line
+        //Thread.sleep(10000); //For testing, you can add this line
         Computer saveComp = computerRepository.save(c);
         lock.unlock();
         return saveComp;
